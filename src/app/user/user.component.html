@@ -1,0 +1,29 @@
+<p class="login-title">List user</p>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Phone</th>
+      <th>Avatar</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of users">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.phone}}</td>
+        <td>
+          <img height="100" src="{{item.avatar}}" alt="">
+          <img height="100" [src]="item.avatar" alt="">
+        </td>
+        <td><button class="btn btn-danger">Delete</button></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
