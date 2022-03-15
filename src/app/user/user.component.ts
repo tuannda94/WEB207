@@ -43,7 +43,7 @@ export class UserComponent implements OnInit {
   // Dinh nghia ham xoa khi click nut Delete
   remove(userId: number) {
     // this.users ~ thuoc tinh users cua class UserComponent
-    this.users = this.users.filter(function (user) {
+    this.usersFilter = this.usersFilter.filter(function (user) {
       return user.id !== userId
     });
   }
@@ -88,5 +88,93 @@ export class UserComponent implements OnInit {
       return lowerCaseUserName.indexOf(unicodeValue) !== -1;
     });
   }
+
+  // Them moi user
+  // 1. Dinh nghia 1 obj newUser trung gian
+  // Nhan gia tri input dau vao, sau khi submit se gan ve gia tri goc
+  newUser = {
+    id: 0,
+    name: '',
+    age: 0,
+    phone: '',
+    avatar: ''
+  };
+
+  onChange(event: any, key: string) {
+    // this.newUser.id = this.users.length + 1; // de lai khi submit moi lam
+    // js spread operator ...
+    this.newUser = {
+      ...this.newUser,
+      [key]: event.target.value // gia tri cua key se phai trung voi thuoc tinh cua object
+    };
+    // Neu key = 'name'
+    // this.newUser = {
+    //   id: 0,
+    //   name: '',
+    //   age: 0,
+    //   phone: '',
+    //   avatar: '',
+    //   name: event.target.value // Do su dung ... nen name se duoc ghi de
+    // }
+    console.log(this.newUser);
+  }
+
+  onSubmit() {
+    // 0. Validate
+    if (!this.onValidate(this.newUser)) {
+      // Thong bao
+      return;
+    }
+
+    // 1.1 Kiem tra xem co phai dang sua khong
+    if (this.isEdit) {
+      // gan gia tri moi cho mang
+      for (let i = 0; i < this.users.length; i++) {
+        if (this.users[i].id === this.newUser.id) {
+          this.users[i] = this.newUser;
+        }
+      }
+      // Dua isEdit ve gia tri goc la false de co the them moi
+      this.isEdit = false;
+    } else {
+      // 1.2. Gan them id bang do dai mang + 1
+      this.newUser.id = this.users.length + 1;
+      // 2. Push phan tu moi vao mang users
+      this.users.push(this.newUser);
+    }
+
+    // 3. Gan lai gia tri goc cho newUser
+    this.newUser = {
+      id: 0,
+      name: '',
+      age: 0,
+      phone: '',
+      avatar: ''
+    };
+  }
+
+  onValidate(obj: any) {
+    // 1 trong so cac truong chua duoc nhap
+    // Hoac gia tri cua age <= 0
+    if (!obj.name || !obj.age || obj.age <= '0' || !obj.phone || !obj.avatar) {
+      // if (obj.name !== '' || obj.age !== '' || obj.age != '0' .........)
+      return false;
+    }
+
+    return true;
+  }
+
+  // Sua
+  // Mac dinh se khong phai dang sua
+  isEdit = false;
+
+  onEdit(obj :any) {
+    // Gan du lieu can sua vao newUser
+    this.newUser = obj;
+    // Chuyen trang thai dang sua thanh true
+    this.isEdit = true;
+    // Sau do se xu ly tiep o onSubmit neu isEdit true
+  }
+
 
 }

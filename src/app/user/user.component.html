@@ -8,22 +8,32 @@
   <form>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" id="name" class="form-control" />
+      <input type="text" id="name" class="form-control"
+      (input)="onChange($event, 'name')"
+      [value]="newUser.name"
+      />
     </div>
     <div class="form-group">
       <label for="age">Age</label>
-      <input type="number" id="age" class="form-control">
+      <input type="number" id="age" class="form-control"
+      (input)="onChange($event, 'age')"
+      [value]="newUser.age"
+      >
     </div>
     <div class="form-group">
       <label for="phone">Phone</label>
-      <input type="text" id="phone" class="form-control">
+      <input type="text" id="phone" class="form-control" (input)="onChange($event, 'phone')"
+      [value]="newUser.phone"
+      >
     </div>
     <div class="form-group">
       <label for="avatarUrl">Avatar url</label>
-      <input type="text" id="avatarUrl" class="form-control">
+      <input type="text" id="avatarUrl" class="form-control" (input)="onChange($event, 'avatar')"
+      [value]="newUser.avatar"
+      >
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" [disabled]="!onValidate(newUser)" (click)="onSubmit()">Submit</button>
     </div>
   </form>
 </div>
@@ -52,7 +62,9 @@
         <td><button
           class="btn btn-danger"
           (click)="remove(item.id)"
-          >Delete</button></td>
+          >Delete</button>
+          <button class="btn btn-success" (click)="onEdit(item)">Edit</button>
+        </td>
       </tr>
 
     </tbody>
