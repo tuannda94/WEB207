@@ -50,7 +50,8 @@ export class AppComponent {
   ];
 
   remove(id: number) {
-    this.students = this.students.filter(student => student.id !== id);
+    // Cap nhat gan this.filterStudents thay vi gan cho this.students
+    this.filterStudents = this.filterStudents.filter(student => student.id !== id);
   }
 
   // Buoi 3
@@ -121,16 +122,31 @@ export class AppComponent {
       return;
     }
 
-    // Nhet thang newUser vao mang this.student
-    this.newUser = {
-      ...this.newUser,
-      id: this.students.length + 1,
-      age: Number(this.newUser.age)
-    };
+    // Kiem tra xem this.newUser co id hay khong
+    if (this.newUser.id) {
+      // Neu co id thi se la cong viec chinh sua
+      // Tim xem dau la phan tu co id la id dang duoc chinh sua
+      for (let i = 0; i < this.students.length; i++) {
+        // Kiem tra phan tu nao co id trung voi id cua du lieu chinh sua
+        if (this.students[i].id === this.newUser.id) {
+          // Khi tim thay thi gan gia tri cho phan tu do
+          this.students[i] = this.newUser;
+        }
+      }
+    } else {
+      // Cong viec tao moi
+      // Nhet thang newUser vao mang this.student
+      this.newUser = {
+        ...this.newUser,
+        id: this.students.length + 1,
+        age: Number(this.newUser.age)
+      };
 
-    this.students.push(this.newUser);
-    // Van de gap phai: neu filterStudents = [...this.students]
-    // thi se khong cap nhat moi duoc
+      this.students.push(this.newUser);
+      // Van de gap phai: neu filterStudents = [...this.students]
+      // thi se khong cap nhat moi duoc
+
+    }
 
     // Cap nhat du lieu default cho newUser de hien thi ben view
     this.newUser = {
@@ -151,5 +167,10 @@ export class AppComponent {
     }
 
     return true;
+  }
+
+  // Chinh sua
+  onEdit(student: any) {
+    this.newUser = student;
   }
 }

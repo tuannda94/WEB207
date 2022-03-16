@@ -49,7 +49,7 @@
     >
   </div>
   <div class="form-group">
-    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <button class="btn btn-primary" [disabled]="!onValidate(newUser)" (click)="onSubmit()">Submit</button>
   </div>
 <!-- Neu dat trong the form thi button se co type='button' -->
 <!-- Neu dat trong the form ma type='submit' thi se bi reload -->
@@ -73,7 +73,10 @@
         <td>{{student.phone}}</td>
         <td>{{student.email}}</td>
         <td><img [src]="student.img" height="100" /></td>
-        <td><button (click)="remove(student.id)" class="btn btn-danger">Xoa</button></td>
+        <td>
+          <button (click)="remove(student.id)" class="btn btn-danger">Xoa</button>
+          <button (click)="onEdit(student)" class="btn btn-success">Chinh sua</button>
+        </td>
       </tr>
     </tbody>
   </table>
