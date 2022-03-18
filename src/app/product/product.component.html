@@ -1,0 +1,58 @@
+<div class="container">
+  <p>{{productForm.value | json}}</p>
+
+  <p>{{newProduct | json}}</p>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form #productForm="ngForm" class="form" (submit)="onSubmit(productForm.value)">
+        <div class="form-group">
+          <input
+          type="text"
+          class="form-control"
+          placeholder="name"
+          name="name"
+          [(ngModel)]="newProduct.name"
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="price"
+            name="price"
+            [(ngModel)]="newProduct.price"
+            >
+        </div>
+        <div class="form-group">
+          <input
+          type="text"
+          class="form-control"
+          placeholder="desc"
+          name="desc"
+          [(ngModel)]="newProduct.desc"
+          >
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead><tr>
+          <td>Ten SP</td>
+          <td>Gia SP</td>
+          <td>Mo ta SP</td>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td>AI PHON 12</td>
+            <td>12000000</td>
+            <td>APPLE</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

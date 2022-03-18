@@ -1,0 +1,83 @@
+<p class="color-red font-weight-bold">Danh sach sinh vien</p>
+<!-- Su dung cap ngoac nhon {{ten_bien_da_dinh_nghia_ben_cpn}} -->
+<p>{{title}}</p>
+<p>{{subTitle}}</p>
+<!-- Bang danh sach sinh vien -->
+<!-- Ten, Tuoi, SDT, Email, Anh dai dien, Hanh dong -->
+<!-- Alt Shift mui ten xuong: duplicate dong -->
+<div class="form-group container">
+  <label for="searchInput">Search</label>
+  <input id="searchInput" type="text" class="form-control" (input)="onSearch($event)">
+  <p>{{searchValue}}</p>
+</div>
+
+<div class="container">
+  <h3>Add new user</h3>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" type="text" class="form-control"
+    (input)="onChangeInput($event, 'name')"
+    [value]="newUser.name"
+    >
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input id="age" type="text" class="form-control"
+    (input)="onChangeInput($event, 'age')"
+    [value]="newUser.age"
+    >
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input id="phone" type="text" class="form-control"
+    (input)="onChangeInput($event, 'phone')"
+    [value]="newUser.phone"
+    >
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input id="email" type="text" class="form-control"
+    (input)="onChangeInput($event, 'email')"
+    [value]="newUser.email"
+    >
+  </div>
+  <div class="form-group">
+    <label for="avatar">Avatar</label>
+    <input id="avatar" type="text" class="form-control"
+    (input)="onChangeInput($event, 'img')"
+    [value]="newUser.img"
+    >
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" [disabled]="!onValidate(newUser)" (click)="onSubmit()">Submit</button>
+  </div>
+<!-- Neu dat trong the form thi button se co type='button' -->
+<!-- Neu dat trong the form ma type='submit' thi se bi reload -->
+</div>
+
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <th>Ten</th>
+      <th>Tuoi</th>
+      <th>SDT</th>
+      <th>Email</th>x
+      <th>Anh dai dien</th>
+      <th>Hanh dong</th>
+    </thead>
+    <tbody *ngIf="students.length > 0">
+      <tr *ngFor="let student of filterStudents">
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.email}}</td>
+        <td><img [src]="student.img" height="100" /></td>
+        <td>
+          <button (click)="remove(student.id)" class="btn btn-danger">Xoa</button>
+          <button (click)="onEdit(student)" class="btn btn-success">Chinh sua</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
