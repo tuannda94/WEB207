@@ -9,12 +9,14 @@ import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 // import thanh phan form
 import { FormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserComponent,
-    ProductComponent
+    ProductComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
