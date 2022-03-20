@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "IPHONE 12",
+      "desc": "APPLE",
+      "price": 20000000
+    }
+  ]
+}

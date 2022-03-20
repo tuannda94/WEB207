@@ -1,10 +1,10 @@
 <div class="container">
-  <p>{{productForm.value | json}}</p>
+  <!-- <p>{{productForm.value | json}}</p> -->
 
   <p>{{newProduct | json}}</p>
 
   <div class="row">
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <form #productForm="ngForm" class="form" (submit)="onSubmit(productForm.value)">
         <div class="form-group">
           <input
@@ -37,19 +37,31 @@
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
       </form>
-    </div>
-    <div class="col-md-6">
+    </div> -->
+    <div class="col-md-12">
       <table class="table table-hover">
         <thead><tr>
+          <td>ID</td>
           <td>Ten SP</td>
           <td>Gia SP</td>
           <td>Mo ta SP</td>
+          <td>Hanh dong</td>
         </tr></thead>
         <tbody>
-          <tr>
-            <td>AI PHON 12</td>
-            <td>12000000</td>
-            <td>APPLE</td>
+          <tr *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.desc}}</td>
+            <td>
+              <a [routerLink]="['/product', product.id]">
+                <button class="btn btn-primary">Xem chi tiet</button>
+              </a>
+              <a [routerLink]="['/product', product.id, 'edit']">
+                <button class="btn btn-warning">Chinh sua</button>
+              </a>
+              <button class="btn btn-danger">Xoa</button>
+            </td>
           </tr>
         </tbody>
       </table>
