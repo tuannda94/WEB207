@@ -2,9 +2,18 @@
   "products": [
     {
       "id": 1,
-      "name": "IPHONE 12",
-      "desc": "APPLE",
-      "price": 20000000
+      "name": "IPHONE 12123123",
+      "desc": "APPLE SAMSUNG",
+      "price": 20000003
+    },
+    {
+      "id": 2
+    },
+    {
+      "name": "samsung s22",
+      "desc": "samsung",
+      "price": 2000000,
+      "id": 3
     }
   ]
 }

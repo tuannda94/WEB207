@@ -18,4 +18,12 @@ export class ProductService {
   getProduct(id: number | string): Observable<any> {
     return this.http.get(`${apiUrl}/${id}`);
   }
+
+  createProduct(data: any): Observable<any> {
+    return this.http.post(apiUrl, data);
+  }
+
+  updateProduct(id: number | string, data: any): Observable<any> {
+    return this.http.put(`${apiUrl}/${id}`, data);
+  }
 }

@@ -11,6 +11,10 @@ const routes: Routes = [
     component: ProductComponent
   },
   {
+    path: 'product/create',
+    component: ProductFormComponent
+  },
+  {
     path: 'product/:id',
     component: ProductDetailComponent
   },
@@ -18,6 +22,7 @@ const routes: Routes = [
     path: 'product/:id/edit',
     component: ProductFormComponent
   },
+
   {
     path: 'app',
     component: AppComponent

@@ -1,1 +1,24 @@
-<p>product-form works!</p>
+<!-- Nếu có id ~ chỉnh sửa: đổi tên tiêu đề và cho id vào form -->
+<h1 *ngIf="id">Chỉnh sửa sản phẩm {{productDetail.name}}</h1>
+<h1 *ngIf="id === undefined">Thêm mới sản phẩm</h1>
+
+<form #productForm="ngForm" (ngSubmit)="onUpdate(productForm.value)">
+  <input *ngIf="id" type="hidden" placeholder="Ten"
+    name="id"
+    [(ngModel)]="productDetail.id"
+  />
+
+  <input type="text" placeholder="Ten"
+    name="name"
+    [(ngModel)]="productDetail.name"
+  />
+  <input type="text" placeholder="Mo ta"
+    name="desc"
+    [(ngModel)]="productDetail.desc"
+  />
+  <input type="number" placeholder="Gia"
+    name="price"
+    [(ngModel)]="productDetail.price"
+  >
+  <button class="btn btn-primary">Submit</button>
+</form>
