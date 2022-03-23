@@ -2,23 +2,50 @@
 <h1 *ngIf="id">Chỉnh sửa sản phẩm {{productDetail.name}}</h1>
 <h1 *ngIf="id === undefined">Thêm mới sản phẩm</h1>
 
+<p>{{name.invalid| json}}</p>
+
 <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm.value)">
-  <input *ngIf="id" type="hidden" placeholder="Ten"
+  <input
+    *ngIf="id"
+    type="hidden"
+    placeholder="Ten"
     name="id"
     [(ngModel)]="productDetail.id"
   />
 
-  <input type="text" placeholder="Ten"
+  <input
+    type="text"
+    placeholder="Ten"
     name="name"
     [(ngModel)]="productDetail.name"
+    required
+    #name="ngModel"
   />
-  <input type="text" placeholder="Mo ta"
+  <input
+    type="text"
+    placeholder="Mo ta"
     name="desc"
     [(ngModel)]="productDetail.desc"
-  />
-  <input type="number" placeholder="Gia"
+    minlength="6"
+    #desc="ngModel"
+    />
+  <input
+    type="number"
+    placeholder="Gia"
     name="price"
     [(ngModel)]="productDetail.price"
-  >
+    min="1"
+    #price="ngModel"
+    >
+
+    <div *ngIf="name.invalid && name.errors?.['required']">
+      Tên sp bắt buộc nhập
+    </div>
+    <div *ngIf="desc.invalid && desc.errors?.['minlength']">
+      Mô tả phải từ 6 ký tự trở lên
+    </div>
+    <div *ngIf="price.invalid && price.errors?.['min']">
+      Giá phải lớn hơn 0
+    </div>
   <button class="btn btn-primary">Submit</button>
 </form>

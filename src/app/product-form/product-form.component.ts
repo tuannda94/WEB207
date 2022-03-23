@@ -36,12 +36,12 @@ export class ProductFormComponent implements OnInit {
 
   onUpdate (obj :any) {
     // Nhan du lieu tu form, tien hanh call API
-    if (obj.id !== undefined) {
-      this.ps.updateProduct(this.id, obj).subscribe();
-    } else {
-      this.ps.createProduct(obj).subscribe();
-    }
-    // Tien hanh dieu huong ve trang danh sach
-    this.router.navigate(['/product']);
+    // if (obj.id !== undefined) {
+    //   this.ps.updateProduct(this.id, obj).subscribe();
+    // } else {
+    //   this.ps.createProduct(obj).subscribe();
+    // }
+    // // Tien hanh dieu huong ve trang danh sach
+    // this.router.navigate(['/product']);
   }
 }

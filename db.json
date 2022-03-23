@@ -1,19 +1,34 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "IPHONE 12123123",
-      "desc": "APPLE SAMSUNG",
-      "price": 20000003
-    },
-    {
-      "id": 2
-    },
-    {
       "name": "samsung s22",
       "desc": "samsung",
       "price": 2000000,
       "id": 3
+    },
+    {
+      "name": "",
+      "desc": "",
+      "price": 0,
+      "id": 4
+    },
+    {
+      "name": "",
+      "desc": "",
+      "price": 0,
+      "id": 5
+    },
+    {
+      "name": "",
+      "desc": "",
+      "price": 0,
+      "id": 6
+    },
+    {
+      "name": "",
+      "desc": "",
+      "price": 0,
+      "id": 7
     }
   ]
 }

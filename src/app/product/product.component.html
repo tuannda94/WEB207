@@ -67,7 +67,7 @@
               <a [routerLink]="['/product', product.id, 'edit']">
                 <button class="btn btn-warning">Chinh sua</button>
               </a>
-              <button class="btn btn-danger">Xoa</button>
+              <button (click)="onDelete(product.id)" class="btn btn-danger">Xoa</button>
             </td>
           </tr>
         </tbody>
