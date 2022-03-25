@@ -2,7 +2,7 @@
 <h1 *ngIf="id">Chỉnh sửa sản phẩm {{productDetail.name}}</h1>
 <h1 *ngIf="id === undefined">Thêm mới sản phẩm</h1>
 
-<p>{{name.invalid| json}}</p>
+<p>{{productForm.form.invalid}}</p>
 
 <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm.value)">
   <input
@@ -19,6 +19,7 @@
     name="name"
     [(ngModel)]="productDetail.name"
     required
+    minlength="6"
     #name="ngModel"
   />
   <input
@@ -27,6 +28,7 @@
     name="desc"
     [(ngModel)]="productDetail.desc"
     minlength="6"
+    required
     #desc="ngModel"
     />
   <input
@@ -37,15 +39,28 @@
     min="1"
     #price="ngModel"
     >
-
-    <div *ngIf="name.invalid && name.errors?.['required']">
+    <p>{{name.errors | json}}</p>
+  <div *ngIf="productForm.form.dirty" style="color: red">
+    <div *ngIf="name.errors?.['required']">
       Tên sp bắt buộc nhập
     </div>
-    <div *ngIf="desc.invalid && desc.errors?.['minlength']">
+    <div *ngIf="name.errors?.['minlength']">
+      Tên sp phải từ 6 ký tự trở lên
+    </div>
+    <div *ngIf="desc.errors?.['required']">
+      Mô tả bắt buộc nhập
+    </div>
+    <div *ngIf="desc.errors?.['minlength']">
       Mô tả phải từ 6 ký tự trở lên
     </div>
-    <div *ngIf="price.invalid && price.errors?.['min']">
+    <div *ngIf="price.errors?.['min']">
       Giá phải lớn hơn 0
     </div>
-  <button class="btn btn-primary">Submit</button>
+  </div>
+  <div>
+    <button
+    class="btn btn-primary"
+    [disabled]="productForm.form.invalid"
+    >Submit</button>
+  </div>
 </form>
