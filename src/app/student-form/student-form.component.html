@@ -1,1 +1,48 @@
-<p>student-form works!</p>
+<div class="container">
+  <h1>Tạo mới sinh viên</h1>
+
+  <div>
+    <form
+      action="" class="form"
+      #studentForm="ngForm"
+      (ngSubmit)="onSubmit(studentForm.value)"
+    >
+      <div class="form-group">
+        <label for="name">Ten sv</label>
+        <input
+          type="text"
+          id="name" class="form-control"
+          name="name"
+          [(ngModel)]="student.name"
+          #name="ngModel"
+          required
+          minlength="6"
+        >
+      </div>
+      <div class="form-group">
+        <label for="class">Ten lop</label>
+        <input type="text"
+          id="class" class="form-control"
+          name="class"
+          [(ngModel)]="student.class"
+          #class="ngModel"
+          required
+          maxlength="32"
+        >
+      </div>
+      <!-- Dirty true khi form đã được người dùng gõ -->
+      <!-- Lúc này mới hiển thị validate message -->
+      <div *ngIf="studentForm.form.dirty" class="text-danger">
+        <p *ngIf="name.errors?.['required']">Tên không được để trống</p>
+        <p *ngIf="name.errors?.['minlength']">Tên tối thiểu 6 ký tự</p>
+        <p *ngIf="class.errors?.['required']">Lớp không được để trống</p>
+        <p *ngIf="class.errors?.['maxlength']">Lớp tối đa 32 ký tự</p>
+      </div>
+      <div><button
+          class="btn btn-info"
+          [disabled]="studentForm.form.invalid"
+        >Submit</button></div>
+    </form>
+  </div>
+
+</div>

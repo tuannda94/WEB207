@@ -14,7 +14,7 @@ export class StudentService {
     return this.http.get(apiUrl);
   }
 
-  getStudent(id: number | string) {
+  getStudent(id: undefined | string) {
     return this.http.get(`${apiUrl}/${id}`);
     // ~ apiUrl + '/' + id
     // ~ 'http://localhost:3000/students/1
@@ -22,5 +22,13 @@ export class StudentService {
 
   deleteStudent(id: number | string) {
     return this.http.delete(`${apiUrl}/${id}`);
+  }
+
+  createStudent(obj: {name:string, class: string}) {
+    return this.http.post(apiUrl, obj);
+  }
+
+  updateStudent(id: number|string, obj: {name:string, class: string}) {
+    return this.http.put(`${apiUrl}/${id}`, obj);
   }
 }

@@ -35,13 +35,17 @@ const routes: Routes = [
     component: StudentComponent
   },
   {
+    path: 'students/form',
+    component: StudentFormComponent
+  },
+  {
+    path: 'students/form/:id',
+    component: StudentFormComponent
+  },
+  {
     path: 'students/:id',
     component: StudentDetailComponent
   },
-  {
-    path: 'student/form',
-    component: StudentFormComponent
-  }
 ];
 
 @NgModule({
