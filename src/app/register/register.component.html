@@ -1,1 +1,38 @@
-<p>register works!</p>
+<p>register form</p>
+<p>{{registerForm.get('username')?.errors | json}}</p>
+<form [formGroup]="registerForm">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" type="text" formControlName="username">
+    <app-show-validate
+      [formField]="registerForm.get('username')"
+      key="Username"
+    ></app-show-validate>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input class="form-control" type="password" formControlName="password">
+    <app-show-validate
+      [formField]="registerForm.get('password')"
+      key="Mật khẩu"
+    ></app-show-validate>
+  </div>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input class="form-control" type="text" formControlName="name">
+    <app-show-validate
+      [formField]="registerForm.get('name')"
+      key="Tên đăng ký"
+    ></app-show-validate>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control" type="email" formControlName="email">
+    <app-show-validate
+      [formField]="registerForm.get('email')"
+      key="Email"
+    ></app-show-validate>
+  </div>
+
+  <div><button>Submit</button></div>
+</form>

@@ -15,6 +15,15 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { AsideComponent } from './layout/aside/aside.component';
+import { FooterComponent } from './layout/footer/footer.component';
+
+// ReactiveFormsModule duoc cung cap de tuong tac voi form dinh nghia
+// trong file ts
+import { ReactiveFormsModule } from '@angular/forms';
+import { ShowValidateComponent } from './components/show-validate/show-validate.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,14 +32,20 @@ import { HttpClientModule } from '@angular/common/http';
     ProductComponent,
     StudentComponent,
     ProductDetailComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    LayoutComponent,
+    HeaderComponent,
+    AsideComponent,
+    FooterComponent,
+    ShowValidateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule, // import cho cac component con su dung duoc,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

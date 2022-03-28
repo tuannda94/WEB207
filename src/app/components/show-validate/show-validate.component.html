@@ -1,0 +1,17 @@
+<div class="text-danger" *ngIf="formData?.dirty">
+  <p *ngIf="formData?.errors?.['required']" >
+    {{key}} không được để trống
+  </p>
+  <p *ngIf="formData?.errors?.['minlength']" >
+    {{key}} từ 6 ký tự
+  </p>
+  <p *ngIf="formData?.errors?.['maxlength']" >
+    {{key}} từ 32 ký tự
+  </p>
+  <p *ngIf="formData?.errors?.['hasName']" >
+    {{key}} bắt buộc có từ 'tuan'
+  </p>
+  <p *ngIf="formData?.errors?.['email']" >
+    {{key}} không đúng định dạng
+  </p>
+</div>
