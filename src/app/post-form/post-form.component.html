@@ -1,0 +1,44 @@
+<p>Post form</p>
+<!-- <p>{{postForm.get('content')?.errors | json}}</p> -->
+<div class="container">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit(postForm.value)">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" formControlName="title" class="form-control">
+
+      <div *ngIf="postForm.get('title')?.dirty" class="text-danger">
+        <p *ngIf="postForm.get('title')?.errors?.['required']">
+          Tiêu đề bắt buộc nhập
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea formControlName="content" class="form-control">
+      </textarea>
+
+      <div *ngIf="postForm.get('content')?.dirty" class="text-danger">
+        <p *ngIf="postForm.get('content')?.errors?.['required']">
+          Nội dung bắt buộc nhập
+        </p>
+        <p *ngIf="postForm.get('content')?.errors?.['minlength']">
+          Nội dung tối thiểu 6 ký tự
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input
+        type="radio"
+        formControlName="status"
+        value="0"
+      >
+      <input
+        type="radio"
+        formControlName="status"
+        value="1"
+      >
+    </div>
+    <div><button class="btn btn-primary">Submit</button></div>
+  </form>
+</div>

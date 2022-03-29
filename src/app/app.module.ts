@@ -16,6 +16,10 @@ import { StudentComponent } from './student/student.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { StudentFormComponent } from './student-form/student-form.component';
 import { StudentService } from './services/student.service';
+import { PostComponent } from './post/post.component';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { PostFormComponent } from './post-form/post-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +29,13 @@ import { StudentService } from './services/student.service';
     ProductDetailComponent,
     StudentComponent,
     StudentDetailComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    PostComponent,
+    PostDetailComponent,
+    PostFormComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,
