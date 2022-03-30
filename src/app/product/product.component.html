@@ -52,24 +52,30 @@
           <td>Ten SP</td>
           <td>Gia SP</td>
           <td>Mo ta SP</td>
+          <td>Trang thai</td>
           <td>Hanh dong</td>
         </tr></thead>
         <tbody>
           <tr *ngFor="let product of products">
             <td>{{product.id}}</td>
-            <!-- <td>{{product.name}}</td> -->
             <td>
               <app-product-name
                 [name]="product.name"
               ></app-product-name>
             </td>
-
             <td>{{product.price}}</td>
-            <!-- <td>{{product.desc}}</td> -->
             <td>
               <app-product-name
                 [name]="product.desc"
               ></app-product-name>
+            </td>
+            <!-- <td>{{product.status}}</td> -->
+            <td>
+              <app-status
+                [status]="product.status"
+                (changeStatus)="parentChangeStatus($event, product.id)"
+              >
+              </app-status>
             </td>
             <td>
               <a [routerLink]="['/product', product.id]">

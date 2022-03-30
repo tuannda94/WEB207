@@ -4,19 +4,22 @@
       "name": "samsung s22",
       "desc": "samsung",
       "price": 2000000,
-      "id": 3
+      "id": 3,
+      "status": 1
     },
     {
       "name": "tuan",
       "desc": "",
       "price": 1,
-      "id": 9
+      "id": 9,
+      "status": 1
     },
     {
       "name": "iphone123",
       "desc": "iphone 123",
       "price": 12300000,
-      "id": 10
+      "id": 10,
+      "status": 1
     }
   ]
 }
