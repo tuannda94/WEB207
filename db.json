@@ -7,40 +7,16 @@
       "id": 3
     },
     {
-      "name": "",
-      "desc": "",
-      "price": 0,
-      "id": 4
-    },
-    {
-      "name": "",
-      "desc": "",
-      "price": 0,
-      "id": 5
-    },
-    {
-      "name": "",
-      "desc": "",
-      "price": 0,
-      "id": 6
-    },
-    {
-      "name": "",
-      "desc": "",
-      "price": 0,
-      "id": 7
-    },
-    {
-      "name": "",
-      "desc": "",
-      "price": 0,
-      "id": 8
-    },
-    {
       "name": "tuan",
       "desc": "",
       "price": 1,
       "id": 9
+    },
+    {
+      "name": "iphone123",
+      "desc": "iphone 123",
+      "price": 12300000,
+      "id": 10
     }
   ]
 }
