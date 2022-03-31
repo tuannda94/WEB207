@@ -20,6 +20,8 @@ import { PostComponent } from './post/post.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShowErrorComponent } from './components/show-error/show-error.component';
+import { StatusBtnComponent } from './components/status-btn/status-btn.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentFormComponent,
     PostComponent,
     PostDetailComponent,
-    PostFormComponent
+    PostFormComponent,
+    ShowErrorComponent,
+    StatusBtnComponent
   ],
   imports: [
     ReactiveFormsModule,

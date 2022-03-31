@@ -26,4 +26,14 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  parentChangeStatus(newStatus: number, student: any) {
+    this.studentService.updateStudent(
+      student.id,
+      {
+        ...student,
+        status: newStatus
+      }).subscribe((data) => {
+        this.onGetList();
+      })
+  }
 }

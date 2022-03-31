@@ -1,0 +1,14 @@
+<div *ngIf="formField.dirty" class="text-danger">
+  <p *ngIf="formField.errors?.['required']">
+    {{key}} bắt buộc nhập...
+  </p>
+  <p *ngIf="formField.errors?.['minlength']">
+    {{key}} tối thiểu 6 ký tự...
+  </p>
+  <p *ngIf="formField.errors?.['maxlength']">
+    {{key}} tối đa 32 ký tự...
+  </p>
+  <p *ngIf="formField.errors?.['email']">
+    {{key}} phải có định dạng email...
+  </p>
+</div>

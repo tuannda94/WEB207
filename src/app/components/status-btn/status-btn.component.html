@@ -1,0 +1,14 @@
+<button
+  *ngIf="status === 1"
+  class="btn btn-info"
+  (click)="onChangeStatus(0)"
+>
+  Hiện
+</button>
+<button
+  *ngIf="status === 0"
+  class="btn btn-warning"
+  (click)="onChangeStatus(1)"
+>
+  Ẩn
+</button>
