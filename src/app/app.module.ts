@@ -26,6 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShowValidateComponent } from './components/show-validate/show-validate.component';
 import { ProductNameComponent } from './components/product-name/product-name.component';
 import { StatusComponent } from './components/status/status.component';
+import { AdminComponent } from './layouts/admin/admin.component';
+import { ClientComponent } from './layouts/client/client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { StatusComponent } from './components/status/status.component';
     FooterComponent,
     ShowValidateComponent,
     ProductNameComponent,
-    StatusComponent
+    StatusComponent,
+    AdminComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
