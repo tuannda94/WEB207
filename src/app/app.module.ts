@@ -22,6 +22,8 @@ import { PostFormComponent } from './post-form/post-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowErrorComponent } from './components/show-error/show-error.component';
 import { StatusBtnComponent } from './components/status-btn/status-btn.component';
+import { ClientComponent } from './layouts/client/client.component';
+import { AdminComponent } from './layouts/admin/admin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { StatusBtnComponent } from './components/status-btn/status-btn.component
     PostDetailComponent,
     PostFormComponent,
     ShowErrorComponent,
-    StatusBtnComponent
+    StatusBtnComponent,
+    ClientComponent,
+    AdminComponent
   ],
   imports: [
     ReactiveFormsModule,
