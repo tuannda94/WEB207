@@ -33,6 +33,11 @@
       key="Email"
     ></app-show-validate>
   </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control" type="file" formControlName="email" (change)="changeFile($event)">
+    <img [src]="imageBase64" alt="">
+  </div>
 
-  <div><button>Submit</button></div>
+  <div><button (click)="onSubmit()">Submit</button></div>
 </form>

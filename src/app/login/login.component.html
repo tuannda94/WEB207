@@ -1,1 +1,7 @@
 <p>login works!</p>
+
+<form [formGroup]="loginForm">
+  <img [src]="imageBase64" alt="" width="200">
+  <input type="file" formControlName="image" (change)="changeImage($event)">
+  <button (click)="onSubmit()">Submit</button>
+</form>

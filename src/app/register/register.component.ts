@@ -7,6 +7,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  imageBase64: any;
   registerForm: FormGroup;
   constructor() {
     this.registerForm = new FormGroup({
@@ -34,5 +35,21 @@ export class RegisterComponent implements OnInit {
       return {hasName: true}; // obj này sẽ được trả về trong errors
     }
     return null;
+  }
+
+  onSubmit () {
+    console.log(this.imageBase64);
+  }
+
+  changeFile (event: any) {
+    if(event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+
+        this.imageBase64 = e.target?.result;
+        console.log(e.target?.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }
