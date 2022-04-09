@@ -30,6 +30,15 @@
           maxlength="32"
         >
       </div>
+      <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <input
+          type="file"
+          class="form-control"
+          (change)="changeAvatar($event)"
+        >
+        <img [src]="avatarBase64" alt="" width="200">
+      </div>
       <!-- Dirty true khi form đã được người dùng gõ -->
       <!-- Lúc này mới hiển thị validate message -->
       <div *ngIf="studentForm.form.dirty" class="text-danger">

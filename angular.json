@@ -31,7 +31,6 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/angular.js"
             ]
           },
           "configurations": {
