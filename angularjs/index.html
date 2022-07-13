@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angularjs</title>
+</head>
+<body ng-app="angular-app">
+    <h1>Angularjs</h1>
+    <!-- Định nghĩa phần giao diện có controller của angularjs -->
+    <div ng-controller="dashboardController">
+        Dashboard Controller
+        {{appName}}
+    </div>
+    <div ng-controller="dashboard2Controller">
+        {{appName}}
+    </div>
+    <div ng-controller="infoController">
+        <p>Tên: {{name}}</p>
+        <p>Địa chỉ: Đường {{address.street}},
+            Quận {{address.district}},
+            Thành phố {{address.city}}
+        </p>
+        <p>Các lớp:
+            <ul>
+                <!-- ng-repeat="phần_tử in mảng" -->
+                <li *ngFor="let class of classes">{{class}}</li>
+                <!-- {
+                    classes.map(function (item) {
+                        <li>{item}</li>
+                    })
+                } -->
+            </ul>
+        </p>
+    </div>
+
+    <script src="./libs/angular.min.js"></script>
+    <script>
+        // Xử lý angular
+        // Định nghĩa module tổng
+        // khởi tạo biến đại diện module tổng, (tên ng-app, mảng bổ trợ)
+        var app = angular.module('angular-app', []);
+
+        app.controller('infoController', function ($scope) {
+            $scope.name = 'tuannda3';
+            $scope.address = {
+                city: 'HN',
+                district: 'Nam Tu Liem',
+                street: 'Trinh Van Bo'
+            };
+            $scope.classes = [
+                'WEB207.01',
+                'WEB207.02',
+            ];
+            $scope.status = 0;
+        });
+
+
+
+
+        // Định nghĩa phần giao diện sẽ tương tác bằng 1 controller
+        app.controller('dashboardController', function ($scope) {
+            // $scope đại diện toàn bộ thuộc tính, phương thức ở trong controller đó
+            $scope.appName = 'Angularjs WEB207.01';
+        });
+        app.controller('dashboard2Controller', function ($scope) {
+            $scope.appName = 'Angularjs Dashboard 2';
+        });
+    </script>
+</body>
+</html>
