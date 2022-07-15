@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>User table</title>
+</head>
+<body ng-app="user-table">
+    <div class="container" ng-controller="eventController">
+        <input type="text" ng-model="inputValue">
+        <p>{{inputValue}}</p>
+        <input type="text" placeholder="inputValue 2" ng-keyup="onInput($event)">
+        <p>{{inputValue2}}</p>
+        <button ng-click="onClick()">Submit</button>
+        <p>Count: {{count}}</p>
+    </div>
+    <div class="container" ng-controller="tableController">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Địa chỉ</th>
+                    <th>SĐT</th>
+                    <th>Email</th>
+                    <th>Avatar</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.address}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.email}}</td>
+                    <td><img src="{{user.avatar}}" width="100"></td>
+                    <!-- <td>{{user.status ? (user.status === 1 ? 'Kích hoạt' : '') : 'Không kích hoạt'}}</td> -->
+                    <td ng-if="user.status === 0">Không kích hoạt</td>
+                    <td ng-if="user.status === 1">Kích hoạt</td>
+                    <td ng-if="user.status === 2">Chờ kích hoạt</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('user-table', []);
+
+        function eventController ($scope) {
+            $scope.count = 0;
+            $scope.onClick = function () {
+                $scope.count++; // $scope.count = $scope.count + 1;
+            }
+            // Lấy giá trị input tự động theo ng-model
+            $scope.inputValue = '';
+            // Lấy giá trị input thủ công
+            $scope.inputValue2 = '';
+            $scope.onInput = function(event) {
+                console.log(event)
+                $scope.inputValue2 = event.target.value;
+            }
+        }
+        app.controller('eventController', eventController);
+
+        function tableController ($scope) {
+            $scope.users = [
+                {
+                    id: 1,
+                    name: 'tuannda3',
+                    address: 'HN',
+                    phone: '0392871868',
+                    email: 'tuannda3@fe.edu.vn',
+                    avatar: '',
+                    status: 0
+                }
+            ];
+        }
+        app.controller('tableController', tableController);
+    </script>
+</body>
+</html>

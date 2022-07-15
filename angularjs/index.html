@@ -25,7 +25,7 @@
         <p>Các lớp:
             <ul>
                 <!-- ng-repeat="phần_tử in mảng" -->
-                <li *ngFor="let class of classes">{{class}}</li>
+                <li ng-repeat="class in classes">{{class}}</li>
                 <!-- {
                     classes.map(function (item) {
                         <li>{item}</li>
