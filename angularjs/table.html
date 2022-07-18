@@ -8,15 +8,42 @@
     <title>User table</title>
 </head>
 <body ng-app="user-table">
-    <div class="container" ng-controller="eventController">
+    <!-- <div class="container" ng-controller="eventController">
         <input type="text" ng-model="inputValue">
         <p>{{inputValue}}</p>
         <input type="text" placeholder="inputValue 2" ng-keyup="onInput($event)">
         <p>{{inputValue2}}</p>
         <button ng-click="onClick()">Submit</button>
         <p>Count: {{count}}</p>
-    </div>
+    </div> -->
+
+
     <div class="container" ng-controller="tableController">
+        <div>
+            <form action="">
+                <div class="form-group">
+                    <label for="">Tên</label>
+                    <input
+                        type="text"
+                        ng-model="inputValues.name"
+                        class="form-control"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="">Địa chỉ</label>
+                    <input type="text" ng-model="inputValues.address" class="form-control">
+                </div>
+                <div>
+                    <input type="radio" value="0" ng-model="inputValues.status">0
+                    <input type="radio" value="1" ng-model="inputValues.status">1
+                </div>
+                <button
+                    ng-click="onSubmitForm()"
+                    class="btn btn-success"
+                    type="button"
+                >Submit</button>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -53,10 +80,11 @@
         function eventController ($scope) {
             $scope.count = 0;
             $scope.onClick = function () {
+                $scope.inputValue = 'da click';
                 $scope.count++; // $scope.count = $scope.count + 1;
             }
             // Lấy giá trị input tự động theo ng-model
-            $scope.inputValue = '';
+            $scope.inputValue = '12312312';
             // Lấy giá trị input thủ công
             $scope.inputValue2 = '';
             $scope.onInput = function(event) {
@@ -78,6 +106,42 @@
                     status: 0
                 }
             ];
+            // 1. Định nghĩa giá trị mặc định cho form
+            $scope.defaultForm = {
+                name: '',
+                address: '',
+                phone: '', //default
+                email: '', //default
+                avatar: '', //default
+                status: 0 //default
+            };
+            // 2. Gán giá trị mặc định cho các ng-model
+            $scope.inputValues = {...$scope.defaultForm};
+            // 3. Sự kiện click nút submit
+            $scope.onSubmitForm = function () {
+                // 3.1 Xử lý id để có id mới
+                var ids = $scope.users.map(function (item) {
+                    return item.id;
+                });
+                var sortedIds = ids.sort(function (a, b) {
+                    return a - b;
+                }); // so sánh thêm điều kiện về mặt giá trị
+                // 3.2 Giá trị form đã nhập kèm id
+                var data = {
+                    // name: inputValues.name,
+                    // address: inputValues.address,
+                    ...$scope.inputValues, // lấy tất cả key value của obj khác
+                    // name: 'abc', //ghi đè giá trị bằng key value khác
+                    id: sortedIds[sortedIds.length - 1] + 1,
+                    status: +$scope.inputValues.status
+                };
+                console.log(data);
+                // 3.3 Push dữ liệu data vào mảng
+                $scope.users.push(data);
+                // 3.4 Cập nhật lại giá trị ban đầu
+                // $scope.inputValues = {...$scope.defaultForm};
+                $scope.inputValues = {};
+            }
         }
         app.controller('tableController', tableController);
     </script>
