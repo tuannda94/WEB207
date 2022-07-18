@@ -54,6 +54,7 @@
                     <th>Email</th>
                     <th>Avatar</th>
                     <th>Status</th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +69,12 @@
                     <td ng-if="user.status === 0">Không kích hoạt</td>
                     <td ng-if="user.status === 1">Kích hoạt</td>
                     <td ng-if="user.status === 2">Chờ kích hoạt</td>
+                    <td>
+                        <button
+                            class="btn btn-danger"
+                            ng-click="onDelete(user.id)"
+                        >Xoá</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -141,6 +148,12 @@
                 // 3.4 Cập nhật lại giá trị ban đầu
                 // $scope.inputValues = {...$scope.defaultForm};
                 $scope.inputValues = {};
+            };
+            $scope.onDelete = function (userId) {
+                // VD: userId = 4 -> lọc để lấy ra những ptu id !== 4
+                $scope.users = $scope.users.filter(function (item) {
+                    return item.id !== userId;
+                })
             }
         }
         app.controller('tableController', tableController);
