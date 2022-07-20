@@ -71,6 +71,10 @@
                     <td ng-if="user.status === 2">Chờ kích hoạt</td>
                     <td>
                         <button
+                            class="btn btn-warning"
+                            ng-click="onEdit(user.id)"
+                        >Sửa</button>
+                        <button
                             class="btn btn-danger"
                             ng-click="onDelete(user.id)"
                         >Xoá</button>
@@ -126,6 +130,24 @@
             $scope.inputValues = {...$scope.defaultForm};
             // 3. Sự kiện click nút submit
             $scope.onSubmitForm = function () {
+                // 3.0 Kiểm tra nếu có id thì sửa và return
+                if ($scope.inputValues.id) {
+                    // Lấy dữ liệu đã chỉnh sửa
+                    var editData = {
+                        ...$scope.inputValues,
+                        status: +$scope.inputValues.status
+                    };
+                    // Tìm ra vị trí user cần chỉnh sửa
+                    var userIndex = $scope.users.findIndex(function (item) {
+                        return item.id === $scope.inputValues.id;
+                    });
+                    // Gán lại giá trị mới
+                    $scope.users[userIndex] = {...editData};
+                    // Gán giá trị default cho form
+                    $scope.inputValues = {}
+                    // Thoát hàm để không chạy xuống logic tạo mới
+                    return;
+                }
                 // 3.1 Xử lý id để có id mới
                 var ids = $scope.users.map(function (item) {
                     return item.id;
@@ -154,7 +176,21 @@
                 $scope.users = $scope.users.filter(function (item) {
                     return item.id !== userId;
                 })
-            }
+            };
+            $scope.onEdit = function (userId) {
+                // 1. Tìm ra user cần sửa theo id
+                var editUser = $scope.users.find(function (item) {
+                    return item.id === userId;
+                });
+                // 2. Đưa dữ liệu user cần sửa lên form
+                if (editUser) {
+                    $scope.inputValues = {
+                        ...editUser,
+                        // status: editUser.status + ''
+                        status: `${editUser.status}` // chuỗi đọc cả biến trong ${}
+                    };
+                }
+            };
         }
         app.controller('tableController', tableController);
     </script>
