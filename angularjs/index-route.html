@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Route</title>
+</head>
+<body>
+    <div ng-app="app-route">
+        <header>
+            HEADER
+            <nav>
+                <ul>
+                    <!-- #! là ký tự để angularjs cắt chuỗi đường dẫn đằng sau -->
+                    <!-- Sau đó sẽ check trong config để render ra templateUrl tương ứng -->
+                    <li><a href="#!/">Dashboard</a></li>
+                    <li><a href="#!/about">About</a></li>
+                    <li><a href="#!/cart">Không đúng đường dẫn trong when</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <!-- ng-view định nghĩa vị trí templateUrl render ra -->
+            <div ng-view></div>
+            <!-- <ng-view></ng-view> -->
+        </main>
+        <footer>FOOTER</footer>
+    </div>
+    <script src="./libs/angular.min.js"></script>
+    <script src="./libs/angular-route.min.js"></script>
+    <!-- script controller -->
+    <script src="./controllers/DashboardController.js"></script>
+    <script>
+        // module app sẽ có thêm phụ thuộc là ngRoute
+        var app = angular.module('app-route', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider.when('/', {
+                templateUrl: './pages/dashboard.html',
+                // với việc sử dụng route thì không định nghĩa ng-controller trong phần html nữa
+                // Định nghĩa controller ở đây
+                // controller: function ($scope) {
+                //     $scope.title = 'Dashboard controller'
+                // }
+                controller: DashboardController // phương thức này đã được gán trong window
+                // template: '<div>Dashboard</div>'
+            }).when('/about', {
+                templateUrl: './pages/about.html'
+            }).otherwise({
+                templateUrl: './pages/404.html'
+            });
+        });
+    </script>
+</body>
+</html>
