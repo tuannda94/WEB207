@@ -16,6 +16,7 @@
                     <!-- Sau đó sẽ check trong config để render ra templateUrl tương ứng -->
                     <li><a href="#!/">Dashboard</a></li>
                     <li><a href="#!/about">About</a></li>
+                    <li><a href="#!/users">Users</a></li>
                     <li><a href="#!/cart">Không đúng đường dẫn trong when</a></li>
                 </ul>
             </nav>
@@ -31,6 +32,7 @@
     <script src="./libs/angular-route.min.js"></script>
     <!-- script controller -->
     <script src="./controllers/DashboardController.js"></script>
+    <script src="./controllers/UserController.js"></script>
     <script>
         // module app sẽ có thêm phụ thuộc là ngRoute
         var app = angular.module('app-route', ['ngRoute']);
@@ -44,9 +46,25 @@
                 // }
                 controller: DashboardController // phương thức này đã được gán trong window
                 // template: '<div>Dashboard</div>'
-            }).when('/about', {
-                templateUrl: './pages/about.html'
-            }).otherwise({
+            }).when('/about/:name', {
+                templateUrl: './pages/about.html',
+                controller: function ($scope, $routeParams, $route) {
+                    // $routeParams lấy ra object các tham số trên url
+                    // $route để quản lý toàn bộ, thay đổi tham số đó
+                    console.log($routeParams);
+                    var name = $routeParams.name;
+                    $scope.name = name;
+
+                    $scope.updateNameURL = function () {
+                        // Khi bấm nút Update thì sẽ cập nhật url
+                        $route.updateParams({name: 'tuannda123'});
+                    }
+                }
+            }).when('/users', {
+                templateUrl: './pages/users.html',
+                controller: UserController
+            })
+            .otherwise({
                 templateUrl: './pages/404.html'
             });
         });

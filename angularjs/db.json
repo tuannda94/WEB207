@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "NV A",
+            "age": 20
+        },
+        {
+            "id": 2,
+            "name": "NV B",
+            "age": 23
+        }
+    ],
+    "profile": {
+        "name": "tuannda3",
+        "email": "tuannda3@fe.edu.vn"
+    }
+}
