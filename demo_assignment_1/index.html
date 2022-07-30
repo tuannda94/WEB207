@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container py-3" ng-app="demo-assignment-1">
+        <!-- BEGIN HEADER -->
+        <ng-include src="'./components/header.html'"></ng-include>
+        <!-- END HEADER -->
+        <main ng-view>
+        </main>
+        <!-- BEGIN FOOTER -->
+        <div ng-include src="'./components/footer.html'"></div>
+        <!-- END FOOTER -->
+    </div>
+    <!-- <div id="worker_1"
+        style="width: 431px; height: 350px; top: 0px; left: -421px; opacity: 0.01; position: fixed; overflow: hidden;">
+        <iframe id="workfr_1" width="431" height="350"
+            src="https://m.youtube.com/static/r/efd3a499/scheduler.vflset/scheduler.js?id=1&amp;udid=bba55e934044480f&amp;config=eyJhY3RpdmUiOnRydWUsInN0YXJ0IjoiaHR0cHM6Ly9tLnlvdXR1YmUuY29tL3N0YXRpYy9yL2VmZDNhNDk5L3NjaGVkdWxlci52ZmxzZXQvc2NoZWR1bGVyLmpzIiwiY291bnQiOjEsInByb2QiOnRydWUsInRpbWVyIjoxODAwMDAsInRpbWUiOjQyfQ=="
+            style="width: 431px; height: 350px; opacity: 0.01;"></iframe></div> -->
+
+    <script src="./libs/angular.min.js"></script>
+    <script src="./libs/angular-route.min.js"></script>
+
+    <!-- Controllers -->
+    <script src="./controllers/AboutController.js"></script>
+
+    <script>
+        var app = angular.module('demo-assignment-1', ['ngRoute']);
+    </script>
+    <script src="./routes.js"></script>
+</body>
+
+</html>
