@@ -1,0 +1,28 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "AI PHON 12",
+            "price": 12000000,
+            "status": 1,
+            "categoryId": 1
+        },
+        {
+            "id": 2,
+            "name": "AI PHON 13",
+            "price": 13000000,
+            "status": 1,
+            "categoryId": 1
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "AI PHON"
+        },
+        {
+            "id": 2,
+            "name": "SAM SUNG"
+        }
+    ]
+}

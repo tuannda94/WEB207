@@ -8,4 +8,8 @@ app.config(function ($routeProvider) {
             templateUrl: './pages/about.html',
             controller: AboutController
         })
+        .when('/products', {
+            templateUrl: './pages/product.html',
+            controller: ProductController
+        })
 });

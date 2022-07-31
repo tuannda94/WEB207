@@ -14,5 +14,63 @@
     "profile": {
         "name": "tuannda3",
         "email": "tuannda3@fe.edu.vn"
-    }
+    },
+    "products": [
+        {
+            "id": 1,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 3,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 4,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 5,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 6,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 7,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 8,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 9,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 10,
+            "name":"P A",
+            "userId": 1
+        },
+        {
+            "id": 11,
+            "name":"P A",
+            "userId": 1
+        }
+    ]
+
 }
