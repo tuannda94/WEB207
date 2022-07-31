@@ -1,10 +1,10 @@
 <div>
     <h5>Danh sách sản phẩm</h5>
     <div class="row">
-        <div class="col-3">
-            <div>Ten sp: AI PHON 12</div>
-            <div>Gia: 12000000</div>
-            <div>Danh muc: AI PHON</div>
+        <div class="col-3" ng-repeat="item in products">
+            <div>Ten sp: {{item.name}}</div>
+            <div>Gia: {{item.price}}</div>
+            <div>Danh muc: {{item.category.name}}</div>
         </div>
     </div>
 </div>

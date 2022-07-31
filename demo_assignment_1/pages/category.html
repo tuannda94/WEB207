@@ -1,0 +1,20 @@
+<div>
+    <h5>Danh mục sản phẩm</h5>
+    <div class="row">
+        <!-- ng-repeat="tên_phần_tử_tự_đặt_trong_từng_vòng_lặp in tên_mảng_được_truyền_từ_controller" -->
+        <div class="col-3" ng-repeat="item in categories">
+            <div>
+                <!-- route when('/categories/:id') -->
+                <a href="#!/categories/{{item.id}}">
+                    <button class="btn btn-info">Chi tiết</button>
+                </a>
+            </div>
+            <div>Ten danh muc: {{item.name}}</div>
+            <ul>
+                <li ng-repeat="product in item.products">
+                    {{product.name}} - {{product.price}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
