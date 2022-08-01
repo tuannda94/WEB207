@@ -1,1 +1,9 @@
-CATEGORY DETAIL
+<div>
+    <h1>Chi tiết danh mục {{category.name}} #{{category.id}}</h1>
+    <h2>Danh sách sản phẩm</h2>
+    <ul>
+        <li ng-repeat="product in category.products">
+            {{product.name}}
+        </li>
+    </ul>
+</div>

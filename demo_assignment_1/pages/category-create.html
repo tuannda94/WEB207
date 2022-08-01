@@ -1,0 +1,34 @@
+<div>
+    <h1>Tạo mới danh mục</h1>
+    <!-- Validate form -->
+    <!-- 1. Định nghĩa loại lỗi cần bắt cho input -->
+    <!-- 2. Định nghĩa tên cho form và input -->
+    <form name="cateForm">
+        <div class="form-group">
+            <label for="">Tên danh mục</label>
+            <input
+                type="text"
+                class="form-control"
+                ng-model="categoryName"
+
+                name="cateName"
+
+                required
+                minlength="6"
+                maxlength="32"
+            >
+            <!-- <span>{{ten_form.ten_input.$error.ten_loi}}</span> -->
+            <!-- <span>{{cateForm.cateName.$error}}</span> -->
+            <span>{{cateForm.cateName.$error.required && 'Bắt buộc nhập'}}</span>
+            <span>{{cateForm.cateName.$error.minlength && 'Tối thiểu 6'}}</span>
+            <span>{{cateForm.cateName.$error.maxlength && 'Tối đa 32'}}</span>
+            <span>{{cateForm.$invalid}}</span>
+        </div>
+        <div>
+            <button
+                class="btn btn-success"
+                ng-disabled="cateForm.$invalid"
+                >Tạo mới</button>
+        </div>
+    </form>
+</div>

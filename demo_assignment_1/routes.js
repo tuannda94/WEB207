@@ -18,10 +18,10 @@ app.config(function ($routeProvider) {
             templateUrl: './pages/category.html',
             controller: CategoryController
         })
-        // .when('/categories/create', {
-        //     templateUrl: './pages/category.html',
-        //     controller: CategoryController
-        // })
+        .when('/categories/create', {
+            templateUrl: './pages/category-create.html',
+            controller: CategoryCreateController
+        })
         // .when('/categories/edit/:id', {
         //     templateUrl: './pages/category.html',
         //     controller: CategoryController
