@@ -18,16 +18,21 @@
                 maxlength="32"
             >
             <!-- <span>{{ten_form.ten_input.$error.ten_loi}}</span> -->
-            <!-- <span>{{cateForm.cateName.$error}}</span> -->
-            <span>{{cateForm.cateName.$error.required && 'Bắt buộc nhập'}}</span>
-            <span>{{cateForm.cateName.$error.minlength && 'Tối thiểu 6'}}</span>
-            <span>{{cateForm.cateName.$error.maxlength && 'Tối đa 32'}}</span>
-            <span>{{cateForm.$invalid}}</span>
+            <!-- <span>{{cateForm.cateName}}</span> -->
+            <!-- $touched: đã bấm vào input chưa, $dirty: đã thay đổi giá trị input chưa -->
+            <div ng-if="cateForm.cateName.$touched || cateForm.cateName.$dirty">
+                <span>{{cateForm.cateName.$error.required && 'Bắt buộc nhập'}}</span>
+                <span>{{cateForm.cateName.$error.minlength && 'Tối thiểu 6'}}</span>
+                <span>{{cateForm.cateName.$error.maxlength && 'Tối đa 32'}}</span>
+                <span>{{cateForm.cateName.$error}}</span>
+            </div>
         </div>
         <div>
             <button
+                type="button"
                 class="btn btn-success"
                 ng-disabled="cateForm.$invalid"
+                ng-click="onSubmit()"
                 >Tạo mới</button>
         </div>
     </form>

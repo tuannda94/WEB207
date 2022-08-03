@@ -1,28 +1,60 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "AI PHON 12",
-            "price": 12000000,
-            "status": 1,
-            "categoryId": 1
-        },
-        {
-            "id": 2,
-            "name": "AI PHON 13",
-            "price": 13000000,
-            "status": 1,
-            "categoryId": 1
-        }
-    ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "AI PHON"
-        },
-        {
-            "id": 2,
-            "name": "SAM SUNG"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "AI PHON 12",
+      "price": 12000000,
+      "status": 1,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "AI PHON 13",
+      "price": 13000000,
+      "status": 1,
+      "categoryId": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "AI PHON"
+    },
+    {
+      "id": 2,
+      "name": "SAM SUNG"
+    },
+    {
+      "name": "00000000",
+      "id": 3
+    },
+    {
+      "name": "12312312",
+      "id": 4
+    },
+    {
+      "name": "12312312321",
+      "id": 5
+    },
+    {
+      "name": "123123123",
+      "id": 6
+    },
+    {
+      "name": "123123123",
+      "id": 7
+    },
+    {
+      "name": "qưeqweqwe",
+      "id": 8
+    },
+    {
+      "name": "12312312321",
+      "id": 9
+    },
+    {
+      "name": "123123123",
+      "id": 10
+    }
+  ]
 }
