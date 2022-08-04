@@ -22,10 +22,10 @@ app.config(function ($routeProvider) {
             templateUrl: './pages/category-create.html',
             controller: CategoryCreateController
         })
-        // .when('/categories/edit/:id', {
-        //     templateUrl: './pages/category.html',
-        //     controller: CategoryController
-        // })
+        .when('/categories/edit/:id', {
+            templateUrl: './pages/category-create.html',
+            controller: CategoryCreateController
+        })
         .when('/categories/:id', { // phải đưa :id xuống cuối cùng
             templateUrl: './pages/category-detail.html',
             controller: CategoryDetailController
