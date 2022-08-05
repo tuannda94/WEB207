@@ -6,14 +6,12 @@ window.CategoryCreateController = function (
     $scope.imageUrl = '';
 
     $scope.onChangeImage = function ($event) {
-        console.log($event.target.files); // có thể upload nhiều file nên files là 1 mảng
+        // console.log($event.target.files); // có thể upload nhiều file nên files là 1 mảng
         var file = $event.target.files[0]; // nếu upload 1 ảnh thì lấy file ở vị trí 0
         var reader = new FileReader(); // sử dụng đối tượng FileReader của JS để đọc file
         reader.readAsDataURL(file); // truyền file vào để đọc
         reader.onload = function () { // khi bắt đầu đọc sẽ gán kết quả đọc cho imageUrl
             $scope.imageUrl = reader.result;
-
-            console.log($scope.imageUrl);
         }
     }
 

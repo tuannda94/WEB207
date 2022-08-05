@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "email": "tuannda3@fe.edu.vn",
+      "password": "$2a$10$hnm9.CYhUPGHMIzA2dc3C.0gm1y6va5ntvdj3d71QHtCqMxoeMqLe",
+      "id": 1
+    }
+  ],
   "products": [
     {
       "id": 1,

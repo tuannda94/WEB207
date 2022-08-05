@@ -11,10 +11,13 @@
 </head>
 
 <body>
-    <div class="container py-3" ng-app="demo-assignment-1">
+    <div class="container py-3" ng-app="demo-assignment-1" ng-controller="AppController">
         <!-- BEGIN HEADER -->
         <ng-include src="'./components/header.html'"></ng-include>
         <!-- END HEADER -->
+        <h1>{{auth.email ? auth.email : 'Chưa Đăng nhập'}}</h1>
+        <h1>{{cartItems}}</h1>
+
         <main ng-view>
         </main>
         <!-- BEGIN FOOTER -->
@@ -30,6 +33,9 @@
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/angular-route.min.js"></script>
 
+    <!-- Thư viện ngStorage dùng để bộ trợ tính năng lưu trữ trong localStorage -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+
     <!-- Config -->
     <script src="./config/api.js"></script>
 
@@ -41,7 +47,43 @@
     <script src="./controllers/CategoryCreateController.js"></script>
 
     <script>
-        var app = angular.module('demo-assignment-1', ['ngRoute']);
+        var app = angular.module('demo-assignment-1', ['ngRoute', 'ngStorage']); // đưa thêm ngStorage vào
+        app.controller('AppController', function ($scope, $localStorage) {
+            // controller này là controller tổng bên ngoài, dùng để khởi tạo giá trị cho localstorage
+            $localStorage.$default({
+                cart: [],
+                cartItems: 0,
+                auth: {}
+            });
+            $scope.auth = $localStorage.auth;
+            $scope.cartItems = $localStorage.cartItems;
+            // $scope.auth là cái cần cập nhật theo thông tin $localstorage.auth
+            // Lắng nghe sự thay đổi của $localStorage.auth để cập nhật lại
+            $scope.$watch(
+                function () {
+                    // Lắng nghe
+                    return $localStorage.auth
+                },
+                function () {
+                    $scope.auth = $localStorage.auth;
+                }
+            )
+            $scope.$watch(
+                function () {
+                    // Lắng nghe
+                    return $localStorage.cartItems
+                },
+                function () {
+                    $scope.cartItems = $localStorage.cartItems;
+                }
+
+                // Giỏ hàng:
+                // 1. Thêm mới khi giỏ hàng chưa có gì -> push item (có kèm số lượng = 1) vào mảng
+                // 2. Thêm mới khi giỏ hàng đã có
+                // 2.1 Kiểm tra xem item được thêm đã tồn tại trong giỏ chưa, nếu có thì tăng số lượng +1, nếu chưa có thì push
+                // 3. Xoá sản phẩm trong giỏ: tìm và filter lọc bỏ sản phẩm đó
+            )
+        });
     </script>
     <script src="./routes.js"></script>
 </body>

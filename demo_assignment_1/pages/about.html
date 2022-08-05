@@ -4,5 +4,12 @@
     <div>
         ABOUT PAGE
         {{text}}
+        LOGIN
+        <form>
+            <input type="text" ng-model="email">
+            <input type="text" ng-model="password">
+            <button ng-click="onLogin()">Login</button>
+        </form>
+        <button ng-click="onClickCart()">Tăng số lượng trong giỏ hàng</button>
     </div>
 </div>
