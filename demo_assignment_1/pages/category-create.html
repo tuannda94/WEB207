@@ -17,6 +17,11 @@
                 minlength="6"
                 maxlength="32"
             >
+            <input
+                type="file"
+                ng-model="imageUrl"
+                onchange="angular.element(this).scope().onChangeImage(event)"
+            >
             <!-- <span>{{ten_form.ten_input.$error.ten_loi}}</span> -->
             <!-- <span>{{cateForm.cateName}}</span> -->
             <!-- $touched: đã bấm vào input chưa, $dirty: đã thay đổi giá trị input chưa -->
