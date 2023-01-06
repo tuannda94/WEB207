@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện tập JS buổi 2</title>
+</head>
+
+<body>
+    <h1>Luyện tập JS</h1>
+
+    <script>
+        // alert('IT17310 Buổi 2');
+        // confirm có trả về giá trị nên có thể gán lại cho 1 biến
+        // var result = confirm('Bạn có học IT17310 không?');
+        // console.log(result);
+
+        // Kiểu dữ liệu của JS
+        // boolean, string, number, object, null, undefined, NaN, array
+
+        // Bài 1: Định nghĩa 2 biến có kiểu dữ liệu số
+        // log ra kết quả tính tổng, hiệu, tích, thương của 2 số
+        var b1_a = 0.02;
+        var b1_b = 0.01;
+        console.log("KQ Bài 1: ");
+        // console.log("KQ Bài 1: "); // Alt Shift Mũi tên xuống
+        // console.log(0.03 - 0.02 === 0.01);
+        console.log(b1_a + b1_b, b1_a - b1_b, b1_a * b1_b, b1_a / b1_b);
+
+        // Bài 2: Định nghĩa 2 biến có kiểu dữ liệu chuỗi
+        // log ra kết quả nối 2 chuỗi đó
+        var b2_a = 'Chuoi 1';
+        var b2_b = 'Chuoi 2';
+        // Ctrl D để bôi phần nội dung giống nhau
+        console.log("KQ Bài 2: ");
+        console.log(b2_a + " " + b2_b);
+
+        // Bài 3: Định nghĩa 2 biến
+        // 1 biến là chuỗi, 1 biến là số, log ra tổng
+        var b3_a = '2';
+        var b3_b = 2;
+        console.log("KQ Bài 3: ");
+        console.log(b3_a - b3_b);
+
+        // Bài 4: Định nghĩa 1 mảng các số
+        // log ra các số chẵn trong mảng
+        var b4_array = [1, 2, 3, 5, 10];
+        console.log("KQ Bài 4: ");
+        for (var i = 0; i < b4_array.length; i++) {
+            var item = b4_array[i];
+
+            if (item % 2 == 0) {
+                console.log(item);
+            }
+        }
+        // Bài 4 dạng hàm
+        // Viết hàm trả về 1 mảng các số chẵn từ mảng cho trước
+
+        // bước 1: Định nghĩa hàm
+        function soChan(array = []) {
+            if (array.length === 0) {
+                return array;
+            }
+
+            var arraySoChan = [];
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] % 2 === 0) {
+                    arraySoChan.push(array[i]);
+                }
+            }
+
+            return arraySoChan;
+        }
+        // bước 2: gọi hàm
+        soChan([1, 2, 3, 4, 5]);
+    </script>
+</body>
+
+</html>
