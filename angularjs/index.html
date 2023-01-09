@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- ng-app là thuộc tính định nghĩa vùng quản lý của
+    Angularjs
+-->
+<!-- B1: định nghĩa giá trị cho ng-app ở body -->
+<body ng-app="angular-app">
+    <h1>Tải tài nguyên từ angularjs.org</h1>
+    <h1>Giải nén và lưu vào thư mục code, đổi tên thành libs</h1>
+
+    <!-- Angular sẽ chia vùng để quản lý,
+    mỗi vùng là 1 controller -->
+    <div ng-controller="topController">
+        <!-- trong 2 cặp ngoặc nhọn sẽ là tên thuộc tính
+            của $scope trong controller này -->
+        <p>Tên: {{name}}</p>
+        <p>Tuổi: {{age}}</p>
+        <p>Địa chỉ: {{address}}</p>
+    </div>
+    <div ng-controller="midController">
+        <p>tuannda3</p>
+    </div>
+    <div ng-controller="botController">
+        <p>tuannda3</p>
+    </div>
+
+    <!-- Nhúng script angular vào đây -->
+    <script src="./libs/angular.min.js"></script>
+    <!-- Code xử lý angularjs ở thẻ script tiếp theo -->
+
+    <!-- B2: Định nghĩa biến quản lý vùng ng-app đã chỉ định -->
+    <script>
+        // đối tượng angular được angular.min.js cung cấp
+        // phương thức module chỉ định vùng sẽ tương tác
+        var app = angular.module('angular-app', []);
+
+        // Định nghĩa từng vùng giao diện theo controller
+        app.controller('topController', function ($scope) {
+            $scope.name = 'TUANNDA1234567';
+            $scope.age = 20;
+            $scope.address = 'Hà Nội';
+        });
+
+    </script>
+</body>
+</html>
