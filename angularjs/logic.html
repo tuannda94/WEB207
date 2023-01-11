@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body ng-app="angularjs-logic">
+    <div ng-controller="loopController">
+        <ul>
+            <!-- users là mảng khai báo ở $scope -->
+            <!-- user là phần tử ở mỗi vòng lặp -->
+            <li ng-repeat="motNguoiDung in dsNguoiDung">
+                <p>Mã người dùng: {{motNguoiDung.id}}</p>
+                <p>Tên: {{motNguoiDung.name}}</p>
+            </li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã người dùng</th>
+                    <th>Tên người dùng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Bảng sử dụng bootstrap -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Email</th>
+                    <th>Avatar</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="pt in ds">
+                    <td>{{pt.id}}</td>
+                    <td>{{pt.name}}</td>
+                    <td>{{pt.email}}</td>
+                    <td>
+                        <img
+                            src="{{pt.avatar}}"
+                            alt="{{pt.name}}"
+                            width="50"
+                            height="50"
+                        >
+                    </td>
+                    <!-- <td>{{pt.status === 0
+                        ? 'K Kích hoạt'
+                        : (pt.status === 1 ? 'KH' : 'Hot')}}
+                    </td> -->
+                    <td ng-if="pt.status == 0">K Kích hoạt</td>
+                    <td ng-if="pt.status == 1">Kích hoạt</td>
+                    <td ng-if="pt.status == 2">Sản phẩm hot</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('angularjs-logic', []);
+        // loopController
+        app.controller('loopController', function ($scope) {
+            $scope.dsNguoiDung = [{id: 1, name: 'Nguyen Van A'}, {id: 2, name: 'Nguyen Van B'}];
+            $scope.ds = [
+                {
+                    id: 1,
+                    name: 'Nguyen Van A',
+                    email: 'nva@gmail.com',
+                    avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
+                    status: 1,
+                },
+            ];
+        });
+    </script>
+</body>
+</html>

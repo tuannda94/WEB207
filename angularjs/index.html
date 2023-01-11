@@ -24,7 +24,14 @@
         <p>Địa chỉ: {{address}}</p>
     </div>
     <div ng-controller="midController">
-        <p>tuannda3</p>
+        <p>Tên tướng: {{champion.name}}</p>
+        <p>Chiêu thức: {{champion.skill}}</p>
+        <p>Trạng thái: {{
+            champion.status === 2
+                ? 'XXX'
+                : (champion.status ? 'YYY' : 'ZZZ')
+            }}
+        </p>
     </div>
     <div ng-controller="botController">
         <p>tuannda3</p>
@@ -46,7 +53,13 @@
             $scope.age = 20;
             $scope.address = 'Hà Nội';
         });
-
+        app.controller('midController', function ($scope) {
+            $scope.champion = {
+                name: 'Talyah',
+                skill: 'Ulti chặn đường cả team mình',
+                status: 1 // 1: hoạt động, 0: không hoạt động
+            }
+        });
     </script>
 </body>
 </html>
