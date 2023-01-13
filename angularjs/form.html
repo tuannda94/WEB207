@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Angularjs</title>
+</head>
+<body ng-app="app-form">
+    <div ng-controller="formController">
+        <!-- Dữ liệu liên quan đến form sẽ được
+        $scope của formController quản lý -->
+        <form action="">
+            <div>
+                <input placeholder="Tên" ng-model="inputValue.ten">
+            </div>
+            <p ng-if="kiemTraDuLieu.ten == true">Vui lòng nhập tên</p>
+
+            <!-- <input
+                placeholder="Tuổi"
+                type="number"
+                ng-keyup="onChangeAge($event)"
+                > -->
+            <input placeholder="Tuổi" ng-model="inputValue.tuoi">
+            <button
+                type="button"
+                ng-click="onSubmitForm()"
+            >Tạo mới</button>
+            <!-- <button
+                type="button"
+                ng-disabled="!inputValue.ten || !inputValue.tuoi"
+                ng-click="onSubmitForm()"
+            >Tạo mới</button> -->
+        </form>
+        <h1>{{inputValue.ten}}</h1>
+        <h1>{{tuoi}}</h1>
+    </div>
+
+    <script src="./libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('app-form', []);
+        app.controller('formController', function ($scope) {
+            // $scope.ten = '';
+            // $scope.tuoi = 0;
+            $scope.onSubmitForm = function () {
+                if (!$scope.inputValue.ten) {
+                    $scope.kiemTraDuLieu.ten = true;
+                } else {
+                    $scope.kiemTraDuLieu.ten = false;
+                }
+            }
+            $scope.onChangeAge = function (event) {
+                $scope.tuoi = event.target.value;
+            }
+            // Kiểu viết quản lý dữ liệu theo obj
+            $scope.inputValue = {
+                ten: '',
+                tuoi: 0
+            };
+            // Yêu cầu: k dùng ng-disabled, để cho bấm
+            // Nếu chưa nhập gì thì hiển thị lỗi báo nhập dl
+            $scope.kiemTraDuLieu = {
+                ten: false,
+                tuoi: false
+            }
+        })
+    </script>
+</body>
+</html>
