@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chua bai lab</title>
+</head>
+<body ng-app="angular-lab">
+    <div ng-controller="labController">
+        <h1>Ho ten: Nguyen Duc Anh Tuan</h1>
+        <h1>MSV: PH12345</h1>
+        <div ng-if="isShowForm == false">
+            <button ng-click="setShowForm(true)">
+                Them moi
+            </button>
+        </div>
+        <div ng-if="isShowForm == true">
+            <form>
+                <div><input type="text" ng-model="input.name"></div>
+                <div><input type="text" ng-model="input.desc"></div>
+                <div>
+                    <button ng-click="setShowForm(false)">
+                        Huy
+                    </button>
+                    <button ng-click="onSave()">Luu</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <table>
+                <thead><tr>
+                    <td>ID</td>
+                    <td>Ten</td>
+                    <td>Mo ta</td>
+                    <td>Hanh dong</td>
+                </tr></thead>
+                <tbody>
+                    <tr ng-repeat="pt in danhsach">
+                        <td>{{pt.id}}</td>
+                        <td>{{pt.name}}</td>
+                        <td>{{pt.desc}}</td>
+                        <td>
+                            <button ng-click="onDelete(pt.id)"
+                            >
+                                Xoa
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="./libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('angular-lab', []);
+        app.controller('labController', function ($scope) {
+            // Thuoc tinh luu trang thai hien thi cua form
+            $scope.isShowForm = false;
+            // Phuong thuc de chuyen trang thai hien thi form
+            $scope.setShowForm = function (status) {
+                $scope.isShowForm = status;
+            }
+            $scope.danhsach = [
+                {id: 1, name: 'PT 1', desc: 'Mo ta PT1'},
+                {id: 2, name: 'PT 2', desc: 'Mo ta PT2'},
+            ];
+            // Quan ly input
+            $scope.input = {
+                name: 'Nguyen Van A',
+                desc: ''
+            };
+            $scope.onSave = function () {
+                var ds = $scope.danhsach;
+                var newId = ds.length > 0
+                    ? ds[ds.length - 1].id + 1
+                    : 1;
+                var newItem = {
+                    ...$scope.input,
+                    id: newId
+                };
+                $scope.danhsach.push(newItem);
+                $scope.input = {
+                    name: '',
+                    desc: ''
+                };
+                $scope.isShowForm = false;
+            };
+            $scope.onDelete = function (deleteId) {
+                var confirm = window.confirm('Ban co muon xoa khong?');
+                if (confirm) {
+                    $scope.danhsach = $scope.danhsach.filter(function (item) {
+                        return item.id !== deleteId;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
