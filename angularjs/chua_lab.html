@@ -20,7 +20,7 @@
                 <div><input type="text" ng-model="input.name"></div>
                 <div><input type="text" ng-model="input.desc"></div>
                 <div>
-                    <button ng-click="setShowForm(false)">
+                    <button ng-click="onClose()">
                         Huy
                     </button>
                     <button ng-click="onSave()">Luu</button>
@@ -41,10 +41,10 @@
                         <td>{{pt.name}}</td>
                         <td>{{pt.desc}}</td>
                         <td>
+                            <button ng-click="onEdit(pt.id)"
+                            >Sua</button>
                             <button ng-click="onDelete(pt.id)"
-                            >
-                                Xoa
-                            </button>
+                            >Xoa</button>
                         </td>
                     </tr>
                 </tbody>
@@ -71,7 +71,27 @@
                 name: 'Nguyen Van A',
                 desc: ''
             };
+            $scope.onClose = function () {
+                $scope.input = {
+                    name: '',
+                    desc: ''
+                };
+                $scope.isShowForm = false;
+                $scope.editId = 0;
+            };
             $scope.onSave = function () {
+                var editId = $scope.editId;
+                // Kiểm tra isEdit xem là sửa hay thêm
+                if (editId) {
+                    for (i = 0; i < $scope.danhsach.length; i++) {
+                        if ($scope.danhsach[i].id == editId) {
+                            $scope.danhsach[i].name = $scope.input.name;
+                            $scope.danhsach[i].desc = $scope.input.desc;
+                        }
+                    }
+                    $scope.onClose();
+                    return;
+                }
                 var ds = $scope.danhsach;
                 var newId = ds.length > 0
                     ? ds[ds.length - 1].id + 1
@@ -81,11 +101,7 @@
                     id: newId
                 };
                 $scope.danhsach.push(newItem);
-                $scope.input = {
-                    name: '',
-                    desc: ''
-                };
-                $scope.isShowForm = false;
+                $scope.onClose();
             };
             $scope.onDelete = function (deleteId) {
                 var confirm = window.confirm('Ban co muon xoa khong?');
@@ -94,7 +110,23 @@
                         return item.id !== deleteId;
                     })
                 }
-            }
+            };
+
+            $scope.editId = 0;
+            $scope.onEdit = function (editId) {
+                $scope.editId = editId;
+                $scope.isShowForm = true;
+                // 1. Tìm kiếm phần tử theo id
+                var editItem = $scope.danhsach
+                    .find(function(item) {
+                        return item.id == editId;
+                });
+                // 2. Hiển thị thông tin cần sửa lên form
+                $scope.input = {
+                    name: editItem.name,
+                    desc: editItem.desc
+                };
+            };
         })
     </script>
 </body>
