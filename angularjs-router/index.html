@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angularjs Router</title>
+</head>
+<body ng-app="angularjs-router">
+    <header>HEADER</header>
+    <nav>
+        <a href="#!/">Trang chủ</a>
+        <a href="#!/list">DS</a>
+    </nav>
+    <main>
+        <div ng-view></div>
+    </main>
+    <footer>FOOTER</footer>
+
+    <script src="./libs/angular.min.js"></script>
+    <script src="./libs/angular-route.min.js"></script>
+    <script src="./controllers/ListController.js"></script>
+    <script>
+        var app = angular.module(
+            'angularjs-router',
+            ['ngRoute']
+        );
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    template: '<h1>Trang chu</h1>'
+                })
+                .when('/list', {
+                    // template: '<h1>Trang DS</h1>'
+                    templateUrl: './pages/list.html',
+                    controller: ListController
+                })
+        });
+    </script>
+</body>
+</html>
