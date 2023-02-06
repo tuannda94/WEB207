@@ -7,11 +7,7 @@
     <title>Angularjs Router</title>
 </head>
 <body ng-app="angularjs-router">
-    <header>HEADER</header>
-    <nav>
-        <a href="#!/">Trang chủ</a>
-        <a href="#!/about">Liên hệ</a>
-    </nav>
+    <custom-header></custom-header>
     <main>
         <div ng-view></div>
     </main>
@@ -25,6 +21,9 @@
             'angularjs-router',
             ['ngRoute']
         );
+        app.component('customHeader', {
+            templateUrl: './components/customHeader.html',
+        })
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/', {
