@@ -10,7 +10,7 @@
     <header>HEADER</header>
     <nav>
         <a href="#!/">Trang chủ</a>
-        <a href="#!/list">DS</a>
+        <a href="#!/about">Liên hệ</a>
     </nav>
     <main>
         <div ng-view></div>
@@ -19,7 +19,7 @@
 
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/angular-route.min.js"></script>
-    <script src="./controllers/ListController.js"></script>
+    <script src="./controllers/HomeController.js"></script>
     <script>
         var app = angular.module(
             'angularjs-router',
@@ -28,12 +28,18 @@
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/', {
-                    template: '<h1>Trang chu</h1>'
+                    templateUrl: './pages/home.html',
+                    controller: HomeController
                 })
-                .when('/list', {
-                    // template: '<h1>Trang DS</h1>'
-                    templateUrl: './pages/list.html',
-                    controller: ListController
+                // .when('/about', {
+                //     templateUrl: './pages/about.html',
+                //     controller: AboutController
+                // })
+                .when('/404', {
+                    templateUrl: './pages/404.html',
+                })
+                .otherwise({
+                    redirectTo: '/404'
                 })
         });
     </script>
