@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "John"
+    },
+    {
+      "id": 3,
+      "name": "John"
+    },
+    {
+      "name": "tao moi json-server",
+      "id": 4
+    },
+    {
+      "name": "",
+      "id": 5
+    },
+    {
+      "name": "",
+      "id": 6
+    },
+    {
+      "name": "111111111",
+      "id": 7
+    }
+  ],
+  "products": [],
+  "profile": {
+    "id": 1,
+    "name": "Tuannda3"
+  }
+}

@@ -21,10 +21,15 @@
     </main>
     <footer>FOOTER</footer>
 
+    <script>
+        var API_URL = 'http://localhost:3000';
+    </script>
+
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/angular-route.min.js"></script>
     <script src="./controllers/HomeController.js"></script>
     <script src="./controllers/ListController.js"></script>
+    <script src="./controllers/AddController.js"></script>
     <script>
         var app = angular.module(
             'angularjs-router',
@@ -42,6 +47,10 @@
                 .when('/ds-nguoi-dung', {
                     templateUrl: './pages/list.html',
                     controller: ListController
+                })
+                .when('/add', {
+                    templateUrl: './pages/add.html',
+                    controller: AddController
                 })
                 .when('/404', {
                     templateUrl: './pages/404.html',

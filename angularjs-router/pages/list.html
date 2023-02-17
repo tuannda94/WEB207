@@ -31,6 +31,17 @@
 </style>
 <h1>{{title}}</h1>
 <div ng-if="isLoading" class="lds-circle"><div></div></div>
-<ul ng-if="!isLoading">
-    <li ng-repeat="pt in nguoi_dung">{{pt.name}}</li>
-</ul>
+<table>
+  <a href="#!/add"><button>Thêm mới</button></a>
+  <thead>
+    <tr><th>ID</th> <th>Name</th> <th>Hanh dong</th> </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="pt in nguoi_dung">
+      <td>{{pt.id}}</td>
+      <td>{{pt.name}}</td>
+      <td ng-click="onEdit(pt.id)">Sua</td>
+      <td ng-click="onDelete(pt.id)">Xoa</td>
+    </tr>
+  </tbody>
+</table>
