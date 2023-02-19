@@ -40,7 +40,8 @@
     <tr ng-repeat="pt in nguoi_dung">
       <td>{{pt.id}}</td>
       <td>{{pt.name}}</td>
-      <td ng-click="onEdit(pt.id)">Sua</td>
+      <!-- <td ng-click="onEdit(pt.id)">Sua</td> -->
+      <td><a href="#!/edit/{{pt.id}}">Chinh sua</a></td>
       <td ng-click="onDelete(pt.id)">Xoa</td>
     </tr>
   </tbody>

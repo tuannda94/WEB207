@@ -30,6 +30,7 @@
     <script src="./controllers/HomeController.js"></script>
     <script src="./controllers/ListController.js"></script>
     <script src="./controllers/AddController.js"></script>
+    <script src="./controllers/EditController.js"></script>
     <script>
         var app = angular.module(
             'angularjs-router',
@@ -51,6 +52,11 @@
                 .when('/add', {
                     templateUrl: './pages/add.html',
                     controller: AddController
+                })
+                // :id thể hiện là có thể nhận được id là 1 giá trị nào đó
+                .when('/edit/:id', {
+                    templateUrl: './pages/edit.html',
+                    controller: EditController
                 })
                 .when('/404', {
                     templateUrl: './pages/404.html',

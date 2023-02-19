@@ -1,28 +1,16 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "John"
-    },
-    {
-      "id": 3,
-      "name": "John"
-    },
-    {
       "name": "tao moi json-server",
       "id": 4
     },
     {
-      "name": "",
-      "id": 5
-    },
-    {
-      "name": "",
-      "id": 6
-    },
-    {
-      "name": "111111111",
+      "name": "1231231312313111111111123123",
       "id": 7
+    },
+    {
+      "name": "123123123",
+      "id": 8
     }
   ],
   "products": [],

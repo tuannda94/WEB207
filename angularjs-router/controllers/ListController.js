@@ -1,11 +1,10 @@
 var ListController = function ($scope, $http, $location) {
-    $scope.api = 'http://localhost:3000';
     $scope.title = "Danh sách người dùng";
     $scope.nguoi_dung = [];
     $scope.isLoading = true;
     // Định nghĩa sẵn 1 hàm lấy dữ liệu mới nhất
     $scope.onGetList = function () {
-        $http.get($scope.api + '/users').then(
+        $http.get(API_URL + '/users').then(
             function (res) {
                 if (res.status == 200) {
                     $scope.isLoading = false;
@@ -19,7 +18,7 @@ var ListController = function ($scope, $http, $location) {
     };
     $scope.onDelete = function (deleteId) {
         // method delete http://localhost:3000/users/1
-        $http.delete($scope.api + '/users/' + deleteId)
+        $http.delete(API_URL + '/users/' + deleteId)
         .then(
             function (res) {
                 onGetList();
@@ -28,18 +27,14 @@ var ListController = function ($scope, $http, $location) {
         )
     };
 
-    $scope.onEdit = function (editId) {
-        $scope.editItem = null;
-        $http.get(API_URL + '/users/' + editId)
-        .then(
-            function (res) {
-                console.log(res);
-                $scope.editItem = res.data;
-                $location.path('/add', $scope.editItem);
-            },
-            function (err) {}
-        )
-    };
+    // $scope.onEdit = function (editId) {
+    //     // 2 cách
+    //     // 1. Lấy bản ghi trước, sau đó truyền sang màn chỉnh sửa -> Không ổn
+
+    //     // 2. Truyền id qua đường dẫn ở màn chỉnh sửa, rồi mới lấy bản ghi bên đó
+    //     $location.path('/edit/' + editId);
+
+    // };
 
     // 1. Call API đã định nghĩa ở trang mockAPI.io
     // $http sẽ có những phương thức như get, post, put... để call API
