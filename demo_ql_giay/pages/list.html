@@ -1,0 +1,33 @@
+<div>
+    <h1>{{title}}</h1>
+    <div><a href="#!/add">Add new shoes</a></div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Brand</th>
+                <th>Size</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="shoes in list_shoes">
+                <td>{{shoes.id}}</td>
+                <td>{{shoes.name}}</td>
+                <td>{{shoes.price}} VND</td>
+                <td>{{shoes.quantity}}</td>
+                <td>{{shoes.brand}}</td>
+                <td>
+                    <span ng-repeat="pt in shoes.size">{{pt}}, </span>
+                </td>
+                <td>
+                    <a href="#!/edit/{{shoes.id}}"><button>Edit</button></a>
+                    <button ng-click="onDelete(shoes.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

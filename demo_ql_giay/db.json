@@ -1,0 +1,17 @@
+{
+  "shoes": [
+    {
+      "id": 1,
+      "name": "Nike air force 1",
+      "price": 1000000,
+      "quantity": 10,
+      "brand": "Nike",
+      "size": [
+        31,
+        32,
+        33,
+        34
+      ]
+    }
+  ]
+}

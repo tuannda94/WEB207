@@ -1,0 +1,18 @@
+<h1>Chỉnh sửa giày</h1>
+<div>
+    <div>
+        <input ng-model="nameInput" placeholder="Name">
+        <p ng-if="!nameInput">Please enter your valid name!</p>
+    </div>
+    <div><input ng-model="priceInput" placeholder="Price"></div>
+    <div><input ng-model="quantityInput" placeholder="Quantity"></div>
+    <div><input ng-model="brandInput" placeholder="Brand"></div>
+    <div><input
+        ng-model="sizeInput"
+        placeholder="30,31,32,33">
+    </div>
+    <button
+        ng-click="onSave()"
+        ng-disabled="!nameInput"
+    >Save</button>
+</div>
