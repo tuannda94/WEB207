@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+<body ng-app="productApp">
+    <div class="container" ng-controller="ProductController">
+        <header>
+            Header
+        </header>
+        <main>
+            <div class="product-detail">
+                <div class="product-top row">
+                    <div class="product-top-left col">
+                        <img src="{{product.image}}" alt="" width="300px">
+                    </div>
+                    <div class="product-top-right col">
+                        <div class="product-top-right-name">{{product.name}}</div>
+                        <div class="product-top-right-price">{{product.price}} VND</div>
+                        <div class="product-top-right-shortdesc">{{product.shortDesc}}</div>
+                    </div>
+                </div>
+                <div class="product-bottom text-center">
+                    <div class="product-bottom-desc-title">Mô tả</div>
+                    <div class="product-bottom-desc-detail">{{product.desc}}</div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            Footer
+        </footer>
+    </div>
+
+
+    <script src="libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('productApp', []);
+        app.controller('ProductController', function ($scope) {
+            $scope.product = {
+                name: 'IPHONE 12',
+                price: 12000000,
+                shortDesc: 'Sản phẩm của Apple',
+                desc: 'Sản phẩm của Apple',
+                image: 'https://t7mobile.com/wp-content/uploads/2021/01/apple-iphone-12-256gb-blue.png'
+            }
+        });
+    </script>
+</body>
+</html>

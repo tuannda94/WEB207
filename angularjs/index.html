@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body ng-app="angularApp">
+    <header ng-controller="HeaderController">
+        HEADER
+        {{title}}
+    </header>
+    <main ng-controller="MainController">
+        {{mainTitle}}
+        <p>Tên thành viên: {{user.name}}</p>
+        <p>Địa chỉ thành viên: {{user.address}}</p>
+        <p>Email thành viên: {{user.email}}</p>
+    </main>
+    <footer ng-controller="FooterController">
+        FOOTER
+        {{footerTitle}}
+    </footer>
+
+    <!-- script đưa thư viện vào nằm trên cùng -->
+    <script src="libs/angular.min.js"></script>
+    <script>
+        // angular là 1 biến đc cung cấp bởi thư viện
+        // angular.module sẽ định nghĩa vùng quản lý của app angularjs
+        var app = angular.module('angularApp', []);
+        app.controller('HeaderController', function ($scope) {
+            // $scope là 1 đối tượng được angularjs cung cấp sẵn
+            // phục vụ việc quản lý các thuộc tính, phương thức
+            // trong vùng controller đó định nghĩa ở html
+            $scope.title = 'Tiêu đề của website';
+        });
+        app.controller('MainController', function ($scope) {
+            // thuộc tính hay phương thức định nghĩa ở controller này
+            // sẽ không dùng được ở controller khác
+            $scope.mainTitle = 'Nội dung website';
+            var localName = 'tuannda3';
+            // Chỗ nào cần sử dụng giá trị để hiển thị thì mới đưa
+            // vào scope
+            $scope.name = localName;
+            // {{user.name}} {{user.address}} {{user.email}}
+            $scope.user = {
+                name: 'tuannda4',
+                address: 'HN',
+                email: 'tuannda4@fpt.edu.vn'
+            };
+        });
+        app.controller('FooterController', function ($scope) {
+            $scope.footerTitle = 'Kết thúc website';
+        });
+    </script>
+
+</body>
+</html>
