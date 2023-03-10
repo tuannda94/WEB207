@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buổi 3: Vòng lặp, câu đk</title>
+</head>
+<body ng-app="nguoiYeuApp">
+    <header>HEADER</header>
+    <main>
+        <div ng-controller="MainController">
+            <div>
+                <h1>Thông tin cá nhân</h1>
+                <p>Tên: {{thong_tin_ca_nhan.ten}}</p>
+                <p>Tuổi: {{thong_tin_ca_nhan.tuoi}}</p>
+                <p>Địa chỉ: {{thong_tin_ca_nhan.dia_chi}}</p>
+                <div>
+                    <input type="text" ng-keyup="layTuoi($event)" placeholder="Nhập tuổi">
+                    <button ng-click="tangTuoi()">Tăng tuổi</button>
+                </div>
+            </div>
+            <div>
+                <h1>Danh sách người yêu</h1>
+                <table>
+                    <thead><tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Tuổi</th>
+                        <th>Trạng thái</th>
+                    </tr></thead>
+                    <tbody>
+                        <!-- ng-repeat="phần_tử_sau_mỗi_vòng_lặp in danh_sách" -->
+                        <tr ng-repeat="tung_ny in ds_nguoi_yeu">
+                            <td>{{tung_ny.id}}</td>
+                            <td>{{tung_ny.ten}}</td>
+                            <td>{{tung_ny.tuoi}}</td>
+                            <!-- Toán tử 3 ngôi nhưng 3 trường hợp -->
+                            <td>{{tung_ny.trang_thai == 1
+                                    ? 'Đang yêu'
+                                    : (tung_ny.trang_thai == 2
+                                        ? 'Đã chia tay'
+                                        : 'Đang dỗi'
+                                    )
+                            }}</td>
+                            <!-- Sử dụng ng-if với 3 trường hợp -->
+                            <td ng-if="tung_ny.trang_thai == 1">Đang yêu</td>
+                            <td ng-if="tung_ny.trang_thai == 2">Đã chia tay</td>
+                            <td ng-if="tung_ny.trang_thai == 0">Đang dỗi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>FOOTER</footer>
+
+    <script src="libs/angular.min.js"></script>
+    <script>
+        var app = angular.module('nguoiYeuApp', []);
+        app.controller('MainController', function ($scope) {
+            $scope.thong_tin_ca_nhan = {
+                ten: 'Nguyen Van A',
+                tuoi: 30,
+                dia_chi: 'Ha Noi'
+            };
+            $scope.ds_nguoi_yeu = [
+                {
+                    id: 1,
+                    ten: 'Nguyen Thi B',
+                    biet_danh: 'Meo meo',
+                    tuoi: 40,
+                    dia_chi: 'Royal city',
+                    sdt: '0392888888',
+                    so_thich: 'Phi cong',
+                    trang_thai: 1 // 0 hoac 1
+                }
+            ];
+
+            var luu_tru_tuoi = 0;
+            $scope.tangTuoi = function () {
+                $scope.thong_tin_ca_nhan.tuoi = luu_tru_tuoi;
+            };
+            $scope.layTuoi = function (e) {
+                luu_tru_tuoi = e.target.value;
+            }
+        });
+    </script>
+</body>
+</html>
