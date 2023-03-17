@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angularjs route</title>
+</head>
+<body ng-app="angularjs-route">
+    <header>HEADER</header>
+    <nav>
+        <ul>
+            <li><a href="#!/">Trang chủ</a></li>
+            <li><a href="#!/lien-he">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <main ng-view>
+        <!-- Phần thay đổi -->
+    </main>
+    <footer>FOOTER</footer>
+
+
+    <script src="./libs/angular.min.js"></script>
+    <script src="./libs/angular-route.min.js"></script>
+    <script src="./controllers/HomeController.js"></script>
+    <script>
+        var app = angular.module('angularjs-route', ['ngRoute']);
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    // template: '<h1>{{content}}</h1>',
+                    templateUrl: './pages/trang-chu.html',
+                    controller: HomeController
+                })
+                .when('/lien-he', {
+                    template: '<p>Lien he</p>'
+                })
+        });
+    </script>
+</body>
+</html>
