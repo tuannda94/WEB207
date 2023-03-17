@@ -80,6 +80,9 @@
                             <td ng-if="tung_ny.trang_thai == 2">Đã chia tay</td>
                             <td ng-if="tung_ny.trang_thai == 0">Đang dỗi</td> -->
                             <td>
+                                <button ng-click="onEdit(tung_ny.id)">
+                                    Sửa
+                                </button>
                                 <button ng-click="onDelete(tung_ny.id)">
                                     Xoá
                                 </button>
@@ -161,15 +164,47 @@
                     tuoi: +$scope.inputs.tuoi, // ép kiểu từ chuỗi về số
                     id: $scope.ds_nguoi_yeu.length + 1 // lấy độ dài mảng + 1
                 };
-                console.log(newObj);
-                // Thêm phần tử mới vào danh sách
-                $scope.ds_nguoi_yeu.push(newObj);
+                if ($scope.editId == 0) {
+                    // Thêm phần tử mới vào danh sách
+                    $scope.ds_nguoi_yeu.push(newObj);
+                } else {
+                    // Thêm giá trị id vào cho bản ghi đang muốn sửa
+                    newObj.id = $scope.editId;
+                    // Tìm phần tử có id đang được sửa và gán giá trị mới
+                    for (i = 0; i < $scope.ds_nguoi_yeu.length; i++) {
+                        if ($scope.ds_nguoi_yeu[i].id == $scope.editId) {
+                            $scope.ds_nguoi_yeu[i] = newObj;
+                            break;
+                        }
+                    }
+                }
                 // Bỏ giá trị đang có ở input về mặc định
                 $scope.inputs.ten = '';
                 $scope.inputs.tuoi = 0;
                 // Ẩn form thêm mới đi
                 $scope.hideForm();
+            };
 
+            // Xác định trạng thái chỉnh sửa dựa theo editId
+            $scope.editId = 0;
+
+            // Lấy dữ liệu cần chỉnh sửa
+            $scope.onEdit = function (editId) {
+                $scope.editId = editId;
+                // Tìm ra thông tin của bản ghi đang được chỉnh sửa
+                // find chỉ trả về 1 phần tử duy nhất nếu thoả mãn điều kiện
+                var editData = $scope.ds_nguoi_yeu.find(function (item) {
+                    return item.id == editId;
+                });
+                if (!editData) {
+                    // Nếu không tồn tại thì báo lỗi và thoát hàm
+                    return alert('Bản ghi không tồn tại');
+                }
+                // Hiển thị form lên
+                $scope.showForm();
+                // Gán giá trị mới cho các ô input
+                $scope.inputs.ten = editData.ten;
+                $scope.inputs.tuoi = editData.tuoi;
             };
 
             // Xoá
