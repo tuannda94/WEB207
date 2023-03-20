@@ -12,6 +12,8 @@
         <ul>
             <li><a href="#!/">Trang chủ</a></li>
             <li><a href="#!/lien-he">Liên hệ</a></li>
+            <li><a href="#!/quan-ly">Quản lý người yêu</a></li>
+            <li><a href="#!/quan-ly-them-moi">Thêm mới người yêu</a></li>
         </ul>
     </nav>
     <main ng-view>
@@ -24,6 +26,7 @@
     <script src="./libs/angular-route.min.js"></script>
     <!-- Controllers -->
     <script src="./controllers/HomeController.js"></script>
+    <script src="./controllers/GirlFriendController.js"></script>
 
     <script>
         var app = angular.module('angularjs-route', ['ngRoute']);
@@ -37,6 +40,23 @@
                     // Controller quản lý tất cả dữ liệu trên template
                     controller: HomeController
                 })
+
+                .when('/quan-ly', {
+                    templateUrl: './pages/quan-ly.html',
+                    controller: GirlFriendController
+                })
+                .when('/quan-ly-chi-tiet', {
+                    templateUrl: './pages/quan-ly-chi-tiet.html'
+                })
+                .when('/quan-ly-them-moi', {
+                    templateUrl: './pages/quan-ly-them-moi.html',
+                    controller: GirlFriendController
+                })
+                .when('/quan-ly-sua', {
+                    templateUrl: './pages/quan-ly-them-moi.html'
+                })
+
+
                 .when('/lien-he', {
                     template: '<p>Lien he</p>'
                 })

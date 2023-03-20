@@ -1,0 +1,63 @@
+<!-- ./pages/quan-ly.html -->
+<div>
+    <h1>Thông tin cá nhân</h1>
+    <p>Tên: {{thong_tin_ca_nhan.ten}}</p>
+    <p>Tuổi: {{thong_tin_ca_nhan.tuoi}}</p>
+    <p>Địa chỉ: {{thong_tin_ca_nhan.dia_chi}}</p>
+</div>
+<div>
+    <div>
+        <div>
+            <a href="#!/quan-ly-them-moi">
+                <button>
+                    Thêm mới
+                </button>
+            </a>
+        </div>
+    </div>
+    <h1>Danh sách người yêu</h1>
+    <table>
+        <thead><tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr></thead>
+        <tbody>
+            <!-- ng-repeat="phần_tử_sau_mỗi_vòng_lặp in danh_sách" -->
+            <tr ng-repeat="tung_ny in ds_nguoi_yeu">
+                <td>{{tung_ny.id}}</td>
+                <td>{{tung_ny.ten}}</td>
+                <td>{{tung_ny.tuoi}}</td>
+                <!-- Toán tử 3 ngôi nhưng 3 trường hợp -->
+                <td>{{tung_ny.trang_thai == 1
+                        ? 'Đang yêu'
+                        : (tung_ny.trang_thai == 2
+                            ? 'Đã chia tay'
+                            : 'Đang dỗi'
+                        )
+                }}</td>
+                <!-- Sử dụng ng-if với 3 trường hợp -->
+                <!-- <td ng-if="tung_ny.trang_thai == 1">Đang yêu</td>
+                <td ng-if="tung_ny.trang_thai == 2">Đã chia tay</td>
+                <td ng-if="tung_ny.trang_thai == 0">Đang dỗi</td> -->
+                <td>
+                    <a href="#!/quan-ly-chi-tiet">
+                        <button>
+                            Chi tiết
+                        </button>
+                    </a>
+                    <a href="#!/quan-ly-sua">
+                        <button>
+                            Sửa
+                        </button>
+                    </a>
+                    <button ng-click="onDelete(tung_ny.id)">
+                        Xoá
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

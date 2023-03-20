@@ -1,0 +1,24 @@
+<form>
+    <input
+        placeholder="Tên người yêu"
+        ng-model="inputs.ten"
+    >
+    <p
+        style="color:red"
+        ng-if="!inputs.ten"
+    >Yêu cầu nhập tên</p>
+    <input
+        placeholder="Tuổi người yêu"
+        ng-model="inputs.tuoi"
+        type="number"
+    >
+    <!-- Kiểm tra việc lắng nghe dữ liệu của ng-model -->
+    <a href="#!/quan-ly">
+        <button">
+            Huỷ
+        </button>
+    </a>
+    <button type="button"
+        ng-click="onSave()"
+    >Lưu</button>
+</form>
