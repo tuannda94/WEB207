@@ -22,18 +22,32 @@
 
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/angular-route.min.js"></script>
+    <!-- Controllers -->
     <script src="./controllers/HomeController.js"></script>
+
     <script>
         var app = angular.module('angularjs-route', ['ngRoute']);
+
         app.config(function ($routeProvider) {
             $routeProvider
                 .when('/', {
+                    // ND HTML được hiển thị ở vị trí ng-view
                     // template: '<h1>{{content}}</h1>',
                     templateUrl: './pages/trang-chu.html',
+                    // Controller quản lý tất cả dữ liệu trên template
                     controller: HomeController
                 })
                 .when('/lien-he', {
                     template: '<p>Lien he</p>'
+                })
+                .when('/not-found', {
+                    // tempateUrl: './pages/404.html',
+                    template: '<h1>404 Not found</h1>'
+                })
+                // Nếu tất cả đường dẫn trên kia đều k chạy vào
+                .otherwise({
+                    // Thì chạy vào đây và điều hướng về route /not-found
+                    redirectTo: '/not-found'
                 })
         });
     </script>

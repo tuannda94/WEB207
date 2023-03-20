@@ -1,4 +1,6 @@
-// ./controllers/HomeController.js
+// File ./controllers/HomeController.js
 var HomeController = function ($scope) {
-    $scope.title = '123123123123123123Trang chủ';
+    $scope.content = 'Trang chủ tách controller';
 }
+// Để sử dụng được nd file này thì cần nhúng script
+// <script src='./controllers/HomeController.js'></script>
