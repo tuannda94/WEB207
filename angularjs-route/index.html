@@ -27,6 +27,7 @@
     <!-- Controllers -->
     <script src="./controllers/HomeController.js"></script>
     <script src="./controllers/GirlFriendController.js"></script>
+    <script src="./controllers/GirlFriendDetailController.js"></script>
 
     <script>
         var app = angular.module('angularjs-route', ['ngRoute']);
@@ -45,8 +46,11 @@
                     templateUrl: './pages/quan-ly.html',
                     controller: GirlFriendController
                 })
-                .when('/quan-ly-chi-tiet', {
-                    templateUrl: './pages/quan-ly-chi-tiet.html'
+                // Nếu đường dẫn cần nhận giá trị thì đặt sau dấu :
+                // Trong controller sẽ dùng $location.params.id để lấy gtri
+                .when('/quan-ly-chi-tiet/:id/:name', {
+                    templateUrl: './pages/quan-ly-chi-tiet.html',
+                    controller: GirlFriendDetailController
                 })
                 .when('/quan-ly-them-moi', {
                     templateUrl: './pages/quan-ly-them-moi.html',
