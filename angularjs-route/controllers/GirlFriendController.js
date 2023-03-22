@@ -1,4 +1,11 @@
-var GirlFriendController = function ($scope) {
+var GirlFriendController = function ($scope, $http) {
+    $http.get('http://localhost:3000/nguoi-yeu')
+    .then(
+        function (res) {console.log(res.data)},
+        function (err) {}
+        );
+
+
     $scope.thong_tin_ca_nhan = {
         ten: 'Nguyen Van A',
         tuoi: 30,
