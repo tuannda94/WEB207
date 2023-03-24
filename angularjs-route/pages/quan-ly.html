@@ -1,4 +1,88 @@
 <!-- ./pages/quan-ly.html -->
+<style>
+    .lds-grid {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+
+    .lds-grid div {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #000;
+        animation: lds-grid 1.2s linear infinite;
+    }
+
+    .lds-grid div:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+    }
+
+    .lds-grid div:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+    }
+
+    .lds-grid div:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+    }
+
+    .lds-grid div:nth-child(4) {
+        top: 32px;
+        left: 8px;
+        animation-delay: -0.4s;
+    }
+
+    .lds-grid div:nth-child(5) {
+        top: 32px;
+        left: 32px;
+        animation-delay: -0.8s;
+    }
+
+    .lds-grid div:nth-child(6) {
+        top: 32px;
+        left: 56px;
+        animation-delay: -1.2s;
+    }
+
+    .lds-grid div:nth-child(7) {
+        top: 56px;
+        left: 8px;
+        animation-delay: -0.8s;
+    }
+
+    .lds-grid div:nth-child(8) {
+        top: 56px;
+        left: 32px;
+        animation-delay: -1.2s;
+    }
+
+    .lds-grid div:nth-child(9) {
+        top: 56px;
+        left: 56px;
+        animation-delay: -1.6s;
+    }
+
+    @keyframes lds-grid {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+</style>
 <div>
     <h1>Thông tin cá nhân</h1>
     <p>Tên: {{thong_tin_ca_nhan.ten}}</p>
@@ -16,14 +100,17 @@
         </div>
     </div>
     <h1>Danh sách người yêu</h1>
+    <div ng-if="loading" class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <table>
-        <thead><tr>
-            <th>ID</th>
-            <th>Tên</th>
-            <th>Tuổi</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-        </tr></thead>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Tuổi</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
         <tbody>
             <!-- ng-repeat="phần_tử_sau_mỗi_vòng_lặp in danh_sách" -->
             <tr ng-repeat="tung_ny in ds_nguoi_yeu">
@@ -32,18 +119,18 @@
                 <td>{{tung_ny.tuoi}}</td>
                 <!-- Toán tử 3 ngôi nhưng 3 trường hợp -->
                 <td>{{tung_ny.trang_thai == 1
-                        ? 'Đang yêu'
-                        : (tung_ny.trang_thai == 2
-                            ? 'Đã chia tay'
-                            : 'Đang dỗi'
-                        )
-                }}</td>
+                    ? 'Đang yêu'
+                    : (tung_ny.trang_thai == 2
+                    ? 'Đã chia tay'
+                    : 'Đang dỗi'
+                    )
+                    }}</td>
                 <!-- Sử dụng ng-if với 3 trường hợp -->
                 <!-- <td ng-if="tung_ny.trang_thai == 1">Đang yêu</td>
                 <td ng-if="tung_ny.trang_thai == 2">Đã chia tay</td>
                 <td ng-if="tung_ny.trang_thai == 0">Đang dỗi</td> -->
                 <td>
-                    <a href="#!/quan-ly-chi-tiet/{{tung_ny.id}}/{{tung_ny.ten}}">
+                    <a href="#!/quan-ly-chi-tiet/{{tung_ny.id}}">
                         <button>
                             Chi tiết
                         </button>

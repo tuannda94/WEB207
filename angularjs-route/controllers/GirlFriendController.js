@@ -1,38 +1,29 @@
 var GirlFriendController = function ($scope, $http) {
-    $http.get('http://localhost:3000/nguoi-yeu')
-    .then(
-        function (res) {console.log(res.data)},
-        function (err) {}
-        );
-
-
+    // Định nghĩa dữ liệu mặc định
     $scope.thong_tin_ca_nhan = {
-        ten: 'Nguyen Van A',
-        tuoi: 30,
-        dia_chi: 'Ha Noi'
+        ten: '',
+        tuoi: 0,
+        dia_chi: ''
     };
-    $scope.ds_nguoi_yeu = [
-        {
-            id: 1,
-            ten: 'Nguyen Thi B',
-            biet_danh: 'Meo meo',
-            tuoi: 40,
-            dia_chi: 'Royal city',
-            sdt: '0392888888',
-            so_thich: 'Phi cong',
-            trang_thai: 1 // 0 hoac 1
-        },
-        {
-            id: 2,
-            ten: 'Nguyen Thi B',
-            biet_danh: 'Meo meo',
-            tuoi: 40,
-            dia_chi: 'Royal city',
-            sdt: '0392888888',
-            so_thich: 'Phi cong',
-            trang_thai: 1 // 0 hoac 1
-        }
-    ];
+    $scope.ds_nguoi_yeu = [];
+    $scope.loading = true;
+    // Làm việc với API để lấy dữ liệu mới về
+    $http.get('http://localhost:3000/ttcn')
+        .then(
+            function (res) {
+                // Nếu lấy dữ liệu thành công thì mới vào đây
+                $scope.thong_tin_ca_nhan = res.data;
+            },
+            function (err) {console.log(err);}
+        );
+    $http.get('http://localhost:3000/nguoi-yeu')
+        .then(
+            function (res) {
+                $scope.loading = false;
+                $scope.ds_nguoi_yeu = res.data;
+            },
+            function (err) {console.log(err);}
+        );
 
     var luu_tru_tuoi = 0;
     $scope.tangTuoi = function () {

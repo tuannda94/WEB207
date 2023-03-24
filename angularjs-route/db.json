@@ -1,8 +1,13 @@
 {
     "nguoi-yeu": [
         {"id": 1, "ten": "Nguyen thi A"},
-        {"id": 1, "ten": "Nguyen thi A"},
-        {"id": 1, "ten": "Nguyen thi A"},
-        {"id": 1, "ten": "Nguyen thi A"}
-    ]
+        {"id": 2, "ten": "Nguyen thi B"},
+        {"id": 3, "ten": "Nguyen thi C"},
+        {"id": 4, "ten": "Nguyen thi D"}
+    ],
+    "ttcn": {
+        "ten": "Nguyen Van ABCDEF",
+        "tuoi": 30,
+        "dia_chi": "Ha Noi"
+    }
 }
