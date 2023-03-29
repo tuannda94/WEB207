@@ -21,13 +21,19 @@
     </main>
     <footer>FOOTER</footer>
 
-
+    <script>
+        const API_URL = 'http://localhost:3000';
+        const API_TTCN = `${API_URL}/ttcn`;
+        const API_NY = `${API_URL}/nguoi-yeu`;
+    </script>
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/angular-route.min.js"></script>
     <!-- Controllers -->
     <script src="./controllers/HomeController.js"></script>
     <script src="./controllers/GirlFriendController.js"></script>
     <script src="./controllers/GirlFriendDetailController.js"></script>
+    <script src="./controllers/GirlFriendEditController.js"></script>
+    <script src="./controllers/GirlFriendAddController.js"></script>
 
     <script>
         var app = angular.module('angularjs-route', ['ngRoute']);
@@ -54,10 +60,11 @@
                 })
                 .when('/quan-ly-them-moi', {
                     templateUrl: './pages/quan-ly-them-moi.html',
-                    controller: GirlFriendController
+                    controller: GirlFriendAddController
                 })
-                .when('/quan-ly-sua', {
-                    templateUrl: './pages/quan-ly-them-moi.html'
+                .when('/quan-ly-sua/:id', {
+                    templateUrl: './pages/quan-ly-sua.html',
+                    controller: GirlFriendEditController
                 })
 
 
