@@ -12,6 +12,12 @@
         ng-model="inputs.tuoi"
         type="number"
     >
+    <!-- angular.element(this).scope() sẽ gọi đến $scope của controller
+        đang quản lý view này -->
+    <input type="file"
+        onchange="angular.element(this).scope().onChangeImg(event)"
+    >
+    <div><img src="{{inputs.img}}" width="200" alt=""></div>
     <!-- Kiểm tra việc lắng nghe dữ liệu của ng-model -->
     <a href="#!/quan-ly">
         <button">
